@@ -1,0 +1,8 @@
+tmp/
+log/
+node_modules/
+
+Gemfile.lock
+
+bundle.js
+bundle.js.map
