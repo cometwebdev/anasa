@@ -13,13 +13,15 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     unless current_user
-      render json: { ['You must ne logged in to access this'] }, status: 401
+      render json: ['You must be logged in to access this'], status: 401
     end
   end
 
   def require_logged_out
     if current_user
-      render json: { ['You must be logged out to access this'] }, status: 400
+      render json: ['You must be logged out to access this'], status: 400
+    end
+  end
 
   def logged_in?
     !!current_user
