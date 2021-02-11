@@ -1,0 +1,20 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/session_actions';
+import { Link } from 'react-router-dom';
+import LoginForm from './login_form';
+
+const mapStateToProps = ({ errors }) => {
+  return {
+    errors: errors.session,
+    signUpLink: <Link to="/signup">Sign up</Link>
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: user => dispatch(login(user))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
