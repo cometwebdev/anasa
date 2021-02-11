@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LoginForm extends React.Component {
+class SignupForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.loginUser(user);
+    this.props.signupUser(user);
   }
 
   renderErrors() {
@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
 
   render(){
     return (
-      <div className="login-form-container">
+      <div className="session-form-container">
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
           <label> Email address
@@ -51,16 +51,16 @@ class LoginForm extends React.Component {
                    onChange={this.update('password')}
             />
           </label>
-          <input type="submit" value="Log in" />
+          <input type="submit" value="Sign up" />
         </form>
         <br/>
         <div>
-          <p>Don't have an account?</p>
-          {this.props.signupLink}
+          <p>Already have an account?</p>
+          {this.props.loginLink}
         </div>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default SignupForm;

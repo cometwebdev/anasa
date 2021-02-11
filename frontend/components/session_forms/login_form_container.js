@@ -7,7 +7,7 @@ import LoginForm from './login_form';
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
-    signUpLink: <Link to="/signup">Sign up</Link>
+    signupLink: <Link to="/signup">Sign up</Link>
   }
 };
 
