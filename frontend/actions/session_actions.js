@@ -35,3 +35,13 @@ export const logout = () => dispatch => (
   APIUtil.logout()
   .then(() => dispatch(logoutCurrentUser()))
 );
+
+// make sure demoUser defined here appears in
+// ../../db/seeds.rb with the exact same credentials
+
+const demoUser = {
+  "email": "awesome@possums.com",
+  "password": "Possums-Are-Awesome"
+};
+
+export const loginDemo = () => login(demoUser);

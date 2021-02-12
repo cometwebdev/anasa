@@ -58,6 +58,10 @@ class LoginForm extends React.Component {
           <p>Don't have an account?</p>
           {this.props.signupLink}
         </div>
+        <div>
+          <p>Or try out Anasa as a demo user!</p>
+          <button onClick={this.props.loginDemoUser}>Try it</button>
+        </div>
       </div>
     );
   }

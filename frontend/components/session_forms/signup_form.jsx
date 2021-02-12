@@ -58,6 +58,10 @@ class SignupForm extends React.Component {
           <p>Already have an account?</p>
           {this.props.loginLink}
         </div>
+        <div>
+          <p>Or try out Anasa as a demo user!</p>
+          <button onClick={this.props.loginDemoUser}>Try it</button>
+        </div>
       </div>
     );
   }

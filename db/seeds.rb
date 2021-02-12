@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# clean up database when seeding -- 
+#   avoids errors of trying to create users if the db has already been seeded
+User.destroy_all
+User.create([
+  {
+    email: "awesome@possums.com",
+    password: "Possums-Are-Awesome"
+  }
+]);
