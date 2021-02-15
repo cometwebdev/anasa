@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from './header';
+import Footer from './footer';
 
 export default ({ signupLink }) => {
   return (
     <>
-      {/* Header */}
+      <Header />
       <div className="splash-main">
         <div className="splash-text">
           <h3>Work on big ideas, without the busywork.</h3>
@@ -14,7 +16,7 @@ export default ({ signupLink }) => {
           <img src="assets/teamwork.jpeg" alt="teamwork!"/>
         </div>
       </div>
-      {/* Footer */}
+      <Footer />
     </>
   );
 }

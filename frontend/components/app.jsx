@@ -16,11 +16,6 @@ import SplashContainer from '../components/splash_and_404/splash_container';
 
 const App = () => (
   <div>
-    <header>
-      <Link to="/">
-        <h1>Anasa</h1>
-      </Link>
-    </header>
   <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

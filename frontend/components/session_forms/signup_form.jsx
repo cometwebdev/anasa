@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props){
@@ -37,6 +38,12 @@ class SignupForm extends React.Component {
   render(){
     return (
       <div className="session-form-container">
+        <Link to="/">
+          <img src="assets/icon.png" alt=""/>
+          <p>
+            anasa
+          </p>
+        </Link>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
           <label> Email address
