@@ -18,6 +18,12 @@ export const receiveErrors = errors => ({
   errors
 });
 
+export const clearErrors = () => ({
+  type: RECEIVE_SESSION_ERRORS,
+  errors: []
+});
+
+
 export const signup = user => dispatch => (
 
   APIUtil.signup(user)
@@ -45,3 +51,7 @@ const demoUser = {
 };
 
 export const loginDemo = () => login(demoUser);
+
+export const clearErrorsThunk = () => dispatch => (
+  dispatch(clearErrors())
+);

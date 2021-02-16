@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, loginDemo } from '../../actions/session_actions';
+import { login, loginDemo, clearErrorsThunk } from '../../actions/session_actions';
 import { Link } from 'react-router-dom';
 import LoginForm from './login_form';
 
@@ -14,7 +14,8 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
   return {
     loginUser: user => dispatch(login(user)),
-    loginDemoUser: () => dispatch(loginDemo())
+    loginDemoUser: () => dispatch(loginDemo()),
+    clearErrors: () => dispatch(clearErrorsThunk())
   };
 };
 

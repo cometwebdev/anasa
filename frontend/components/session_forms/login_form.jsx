@@ -35,6 +35,10 @@ class LoginForm extends React.Component {
     );
   }
 
+  componentWillUnmount(){
+    this.props.clearErrors()
+  }
+
   render(){
     return (
       <div className="auth-page">
@@ -43,10 +47,9 @@ class LoginForm extends React.Component {
         <div className="auth-layout">
           <div className="auth-main">
             <Link to="/" className="auth-logo-container">
-              <h5>
-                <img src="assets/icon.png" className="auth-icon" alt=""/>
-                <span>anasa</span>
-              </h5>
+              <div className="auth-logo">
+                <h5>anasa</h5>
+              </div>
             </Link>
             <span className="auth-errors">
               <div>

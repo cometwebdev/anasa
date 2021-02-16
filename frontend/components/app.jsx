@@ -12,7 +12,7 @@ import LoginFormContainer from '../components/session_forms/login_form_container
 import SignupFormContainer from '../components/session_forms/signup_form_container';
 import PageNotFoundContainer from '../components/splash_and_404/page_not_found_container'
 import SplashContainer from '../components/splash_and_404/splash_container';
-
+import HomeContainer from '../components/logged_in/home_container';
 
 const App = () => (
   <Switch>
@@ -20,6 +20,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       {/* Splash Page */}
       <AuthRoute exact path="/" component={SplashContainer} />
+      <ProtectedRoute path="/home" component={HomeContainer} />
       {/* 404 Not Found Page*/}
       <AuthRoute component={PageNotFoundContainer} />
   </Switch>
