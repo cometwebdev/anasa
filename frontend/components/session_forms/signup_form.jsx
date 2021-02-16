@@ -37,37 +37,57 @@ class SignupForm extends React.Component {
 
   render(){
     return (
-      <div className="auth-form-container">
-        <Link to="/">
-          <img src="assets/icon.png" alt=""/>
-          <p>
-            anasa
-          </p>
-        </Link>
-        {this.renderErrors()}
-        <form onSubmit={this.handleSubmit} className="auth-form">
-          <label> Email address
-            <input type="text"
-                   value={this.state.email}
-                   onChange={this.update('email')}
-            />
-          </label>
-          <label> Password
-            <input type="password"
-                   value={this.state.password}
-                   onChange={this.update('password')}
-            />
-          </label>
-          <input type="submit" value="Sign up" />
-        </form>
-        <br/>
-        <div>
-          <p>Already have an account?</p>
-          {this.props.loginLink}
-        </div>
-        <div>
-          <p>Or try out Anasa as a demo user!</p>
-          <button onClick={this.props.loginDemoUser}>Try it</button>
+      <div className="auth-page">
+        {/* this is my outermost div */}
+        <title>Log In -Anasa</title>
+        <div className="auth-layout">
+          <div className="auth-main">
+            <Link to="/" className="auth-logo-container">
+              <h5>
+                <img src="assets/icon.png" className="auth-icon" alt=""/>
+                <span>anasa</span>
+              </h5>
+            </Link>
+            <span className="auth-errors">
+              <div>
+                {this.renderErrors()}
+              </div>
+            </span>
+            <div className="auth-form-container">
+              <form onSubmit={this.handleSubmit} 
+                    className="auth-form">
+                <div className="auth-inputs">
+                  <span className="auth-input-label">Email address</span>
+                  <input type="text"
+                         value={this.state.email}
+                         onChange={this.update('email')}
+                         className="auth-input-field"
+                  />
+                  <span className="auth-input-label">Password</span>
+                  <input type="password"
+                         value={this.state.password}
+                         onChange={this.update('password')}
+                         className="auth-input-field"
+                  />
+                </div>
+                <input type="submit" 
+                       value="Sign up"
+                       className="auth-form-submit"
+                />
+              </form>
+              <div className="auth-form-link">
+                <span>Already have an account?</span>
+                {this.props.loginLink}
+              </div>
+              <div className="auth-form-link">
+                <span>Or try out Anasa as a demo user!</span>
+                <button onClick={this.props.loginDemoUser} 
+                        className="demo-login">
+                  Try for free
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
