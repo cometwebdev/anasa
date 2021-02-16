@@ -15,7 +15,6 @@ import SplashContainer from '../components/splash_and_404/splash_container';
 
 
 const App = () => (
-  <div>
   <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
@@ -24,7 +23,6 @@ const App = () => (
       {/* 404 Not Found Page*/}
       <AuthRoute component={PageNotFoundContainer} />
   </Switch>
-  </div>
 );
 
 export default App;

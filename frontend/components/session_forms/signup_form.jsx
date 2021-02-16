@@ -37,7 +37,7 @@ class SignupForm extends React.Component {
 
   render(){
     return (
-      <div className="session-form-container">
+      <div className="auth-form-container">
         <Link to="/">
           <img src="assets/icon.png" alt=""/>
           <p>
@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
           </p>
         </Link>
         {this.renderErrors()}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="auth-form">
           <label> Email address
             <input type="text"
                    value={this.state.email}
