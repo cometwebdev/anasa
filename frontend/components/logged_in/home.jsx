@@ -5,7 +5,6 @@ class Home extends React.Component {
     super(props);
   }
   render(){
-    debugger;
     return(
       <button onClick={this.props.logoutUser}>Log Out</button>
     );
