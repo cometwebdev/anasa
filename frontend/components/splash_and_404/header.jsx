@@ -3,25 +3,22 @@ import { Link } from 'react-router-dom';
 
 export default () => {
   return (
-    <div>
-      <div>
-        <Link to="/">
-          <img src="assets/icon.png" alt=""/>
-          <p>
-            anasa
-          </p>
-        </Link>
-      </div>
-      <div>
-        <p>Why Anasa?</p>
-        <p>Solutions</p>
-        <p>Resources</p>
-        <p>Entreprise</p>
-        <p>Pricing</p>
-      </div>
-      <div>
-        <Link to="/login">Log In</Link>
-        <Link to="/signup">Sign Up</Link>
+    <div className="splash-404-header">
+      <div className="splash-404-header-row">
+        <div className="splash-404-header-wrapper">
+          <div className="splash-404-header-nav-group">
+            <Link to="/" className="splash-404-header-logo">
+              <img src="assets/icon.png" className="auth-icon" alt=""/>
+              <span>anasa</span>
+            </Link>
+          </div>
+          <div className="splash-404-header-nav-group">
+            <Link to="/login" className="splash-404-header-login">
+              <span className="splash-404-header-login-text">Log In</span>
+            </Link>
+            <Link to="/signup" className="splash-404-header-signup">Sign Up</Link>
+          </div>
+        </div>
       </div>
     </div>
   )
