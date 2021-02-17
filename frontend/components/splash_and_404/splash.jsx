@@ -13,7 +13,7 @@ export default ({ signupLink }) => {
           {signupLink}
         </div>
         <div className="splash-img">
-          <img src="assets/teamwork.jpeg" alt="teamwork!"/>
+         {/* { <img src="assets/teamwork.jpeg" alt="teamwork!"/>} */}
         </div>
       </div>
       <Footer />

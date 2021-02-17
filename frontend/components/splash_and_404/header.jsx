@@ -7,9 +7,10 @@ export default () => {
       <div className="splash-404-header-row">
         <div className="splash-404-header-wrapper">
           <div className="splash-404-header-nav-group">
-            <Link to="/" className="splash-404-header-logo">
-              <img src="assets/icon.png" className="auth-icon" alt=""/>
-              <span>anasa</span>
+          <Link to="/" className="splash-404-header-logo">
+              <div className="splash-404-logo">
+                <h5>anasa</h5>
+              </div>
             </Link>
           </div>
           <div className="splash-404-header-nav-group">

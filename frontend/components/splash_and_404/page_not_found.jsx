@@ -11,7 +11,7 @@ export default (props) => {
         <h4>We can't find what you're looking for, but the links below may help.</h4>
       </div>
       <div className="PageNotFound-img">
-        <img src="assets/lost.jpeg" alt="page-not-found"/>
+        {/* {<img src="assets/lost.jpeg" alt="page-not-found"/>} */}
       </div>
       <Footer />
     </>
