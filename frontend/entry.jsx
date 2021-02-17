@@ -5,6 +5,7 @@ import Root from './components/root';
 
 import { signup, login, logout } from './actions/session_actions';
 
+
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
   if(window.currentUser){
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.signup = signup;
   window.login = login;
   window.logout = logout;
+
   
 
   const rootEl = document.getElementById("root");
