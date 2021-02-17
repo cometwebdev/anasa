@@ -1,0 +1,19 @@
+.home-sidebar {
+  background-color: #151b26;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  .home-logo-container {
+    .home-logo {
+      background-size: 15px;
+      background-image: image-url('icon.png');
+      background-repeat: no-repeat;
+      background-position-y: 1.5px;
+
+      h5{
+        color: white;
+        padding-left: 18px;
+      }
+    }
+  }
+}
