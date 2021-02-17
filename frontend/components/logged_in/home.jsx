@@ -1,6 +1,6 @@
 import React from 'react';
 import SidebarContainer from './sidebar_container';
-
+import HomeHeaderContainer from './home_header_container';
 
 class Home extends React.Component {
   constructor(props){
@@ -10,9 +10,7 @@ class Home extends React.Component {
     return(
       <div className="home-main">
         <SidebarContainer />
-        <span>Home</span>
-        <button onClick={this.props.logoutUser}>Log Out</button>
-
+        <HomeHeaderContainer />
       </div>
     );
   }
