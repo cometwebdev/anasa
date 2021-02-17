@@ -40,5 +40,11 @@
       white-space: nowrap;
 
     }
+
+    .home-header-logout:hover {
+      transition-duration: .2s;
+      background: #635ac7;
+      border-color: #635ac7;
+    }
   }
 }

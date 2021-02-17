@@ -173,7 +173,7 @@
           line-height: 20px;
         }
 
-        .link {
+        .link span {
           //color 
           color: $user-auth-link;
           //display
@@ -182,7 +182,7 @@
           font-size: 13px;
         }
         
-        .link:hover {
+        .link span:hover {
           //typography
           text-decoration: underline;
         }
@@ -206,6 +206,12 @@
           text-decoration: none;
           transition: background-color .15s,color .15s ease-in-out;
           white-space: nowrap;
+        }
+
+        .demo-login:hover {
+          transition-duration: .2s;
+          background: #635ac7;
+          border-color: #635ac7;
         }
       }
     }
