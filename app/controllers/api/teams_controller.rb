@@ -1,7 +1,8 @@
 class Api::TeamsController < ApplicationController
+  
 
   def create
-    @team = team.new(team_params)
+    @team = Team.new(team_params)
     if @team.save
       # After Creating UserTeam Table, add current_user to this Team via joins table.
       render "api/teams/show"
@@ -11,7 +12,7 @@ class Api::TeamsController < ApplicationController
   end
 
   def update
-    @team = team.find_by(id: params[:id])
+    @team = Team.find_by(id: params[:id])
     if @team.update(team_params)
       render "api/teams/show"
     else
