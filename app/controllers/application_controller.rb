@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
+  
   #HCRLLL
   helper_method :current_user, :logged_in?
   before_action :require_logged_in, only: [:logout!]
