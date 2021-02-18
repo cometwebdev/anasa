@@ -6,9 +6,8 @@ export default () => {
     <div>
       <div>
         <div>
-          <img src="assets/icon.png" alt=""/>
         </div>
-        <div>
+        {/* {<div>
           Anasa
         </div>
         <div>
@@ -22,7 +21,7 @@ export default () => {
         </div>
         <div>
           Learn
-        </div>
+        </div>} */}
       </div>
     </div>
   );
