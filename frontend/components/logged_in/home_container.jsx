@@ -1,3 +1,6 @@
+
+// need to import Rect from 'react' in container files
+//    if passing custom React Components as props 
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';

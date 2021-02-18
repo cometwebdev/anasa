@@ -13,12 +13,19 @@ import SignupFormContainer from '../components/session_forms/signup_form_contain
 import PageNotFoundContainer from '../components/splash_and_404/page_not_found_container'
 import SplashContainer from '../components/splash_and_404/splash_container';
 import HomeContainer from '../components/logged_in/home_container';
+import TeamShowContainer from '../components/logged_in/team_show/team_show_container';
+import TeamShow from './logged_in/team_show/team_show';
+
 
 const App = () => (
   <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      
+      
+      <ProtectedRoute exact path="/teams/:teamId" component={TeamShowContainer} />
       <ProtectedRoute path="/home" component={HomeContainer} />
+      
       {/* Splash Page */}
       <AuthRoute exact path="/" component={SplashContainer} />
       {/* 404 Not Found Page*/}

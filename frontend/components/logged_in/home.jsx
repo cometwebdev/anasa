@@ -10,7 +10,7 @@ class Home extends React.Component {
     return(
       <div className="home-main">
         <SidebarContainer />
-        <HomeHeaderContainer />
+        <HomeHeaderContainer title="Home" />
       </div>
     );
   }

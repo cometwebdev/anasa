@@ -10,7 +10,7 @@ class HomeHeader extends React.Component {
     return (
       <div className="home-header">
         <div className="home-header-main">
-          <span className="home-header-title">Home</span>
+          <span className="home-header-title">{this.props.title}</span>
         </div>
         <div className="home-header-buttons">
           <button onClick={this.props.logoutUser}
