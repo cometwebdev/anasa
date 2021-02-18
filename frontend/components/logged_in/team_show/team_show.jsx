@@ -7,7 +7,10 @@ class TeamShow extends React.Component{
   }
 
   componentDidMount(){
-    debugger
+    this.props.thunkGetTeam();
+  }
+
+  componentDidUpdate(){
     this.props.thunkGetTeam();
   }
 
