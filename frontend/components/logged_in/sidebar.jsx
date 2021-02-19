@@ -6,6 +6,10 @@ class Sidebar extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    this.props.thunkGetTeam();
+  }
+
   render(){
     return (
       <div className="home-sidebar">
@@ -15,6 +19,13 @@ class Sidebar extends React.Component {
                 <h5>anasa</h5>
               </div>
             </Link>
+        </div>
+        <div className="home-sidebar-teams">
+          {this.props.teams.map( team => (
+            <Link to={`/teams/${team.id}`} key={team.id}>
+              <span>{team.name}</span>
+            </Link>
+          ))}
         </div>
       </div>
     )

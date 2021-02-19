@@ -15,13 +15,15 @@ import TeamShow from './team_show';
 
 const mapStateToProps = (state, ownProps) => {
   const teamId = ownProps.match.params.teamId;
-  const team = state.entities.teams[teamId]
+  const team = state.entities.teams[teamId];
+  const name = team ? team.name : "Loading Team Name...";
+  const description = (team && team.description) ? team.description : "";
   return {
     id: teamId,
     header: <HomeHeaderContainer title="Team Show Page" />,
     sidebar: <SidebarContainer />,
-    name: team ? team.name : "Loading Team Name...",
-    description: team ? team.description : ""
+    name,
+    description
   };
 };
 

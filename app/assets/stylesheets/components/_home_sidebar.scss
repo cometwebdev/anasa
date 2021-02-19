@@ -17,4 +17,22 @@
       }
     }
   }
+
+  .home-sidebar-teams {
+    margin-top: 50px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      margin-top: 5px;
+      span {
+        color: white;
+      }
+    }
+
+    a:hover {
+      background: #796EFF;
+    }
+  }
 }

@@ -11,7 +11,8 @@ class TeamShow extends React.Component{
   }
 
   componentDidUpdate(){
-    this.props.thunkGetTeam();
+    if (!this.props.name) this.props.thunkGetTeam();
+    debugger
   }
 
   changeDescription(){

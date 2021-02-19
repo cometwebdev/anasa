@@ -2,15 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Sidebar from './sidebar'
 
-const mapStateToProps = () => {
-  return {
 
+import { getTeams } from '../../actions/team_actions';
+import { getTeam } from '../../util/team_api_util';
+
+const mapStateToProps = (state) => {
+  const teams = Object.values(state.entities.teams);
+  return {
+    teams
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    
+    thunkGetTeam: () => dispatch(getTeams()),
   };
 };
 
