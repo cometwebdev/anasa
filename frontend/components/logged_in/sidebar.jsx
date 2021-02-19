@@ -7,7 +7,7 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount(){
-    this.props.thunkGetTeam();
+    this.props.thunkGetTeams();
   }
 
   render(){

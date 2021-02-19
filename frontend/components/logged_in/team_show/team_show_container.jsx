@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   const teamId = ownProps.match.params.teamId;
   const team = state.entities.teams[teamId];
   const name = team ? team.name : "Loading Team Name...";
-  const description = (team && team.description) ? team.description : "";
+  const description = team ? team.description : undefined;
   return {
     id: teamId,
     header: <HomeHeaderContainer title="Team Show Page" />,
