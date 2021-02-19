@@ -15,3 +15,40 @@ User.create([
     password: "Possums-Are-Awesome"
   }
 ]);
+
+Team.destroy_all
+Team.create([
+  {
+    name: "Team Rocket",
+    description: "Prepare for trouble!\n
+    And make it double!\n
+    To protect the world from devastation!\n
+    To unite all peoples within our nation!\n
+    To denounce the evils of truth and love!\n
+    To extend our reach to the stars above!\n
+    Jessie!\n
+    James!\n
+    Team Rocket blasts off at the speed of light!\n
+    Surrender now, or prepare to fight!\n
+    \n
+    Meowth!\n
+    That's right!"
+  },
+
+  {
+    name: "Teen Titans",
+    description: "When there's trouble you know who to call\n
+    Teen Titans!\n
+    From their towers they can see it all\n
+    Teen Titans!\n
+    When there's evil on the attack\n
+    You can rest knowing they've got your back\n
+    'Cause when the world needs heroes on patrol\n
+    Teen Titans, go!"
+  },
+
+  {
+    name: "TBA",
+    description: ""
+  },
+]);

@@ -3,7 +3,8 @@ import React from 'react';
 class TeamShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = { name: this.props.name,
+    this.state = { id: this.props.id,
+                   name: this.props.name,
                    description: this.props.description || "",
                    baseDescription: this.props.description || "" };
   }
@@ -25,6 +26,17 @@ class TeamShow extends React.Component{
 
 
     if  (this.props.name != this.state.name){
+      if (this.state.name != "Loading Team Name..."
+          && this.state.description != this.state.baseDescription){
+        this.props.thunkUpdateTeam(
+          {
+            id: this.state.id,
+            name: this.state.name,
+            description: this.state.description
+          }
+        );
+      }
+      this.setState({id: this.props.id})
       this.setState({name: this.props.name});
       this.setState({description: this.props.description || ""})
       this.setState({baseDescription: this.props.baseDescription || ""})
@@ -34,6 +46,16 @@ class TeamShow extends React.Component{
       this.setState({description: this.props.description || ""})
       this.setState({baseDescription: this.props.description || ""})
     }
+  }
+
+  componentWillUnmount(){
+    this.props.thunkUpdateTeam(
+      {
+        id: this.props.id,
+        name: this.props.name,
+        description: this.state.description
+      }
+    );
   }
 
   changeDescription(){
@@ -55,6 +77,8 @@ class TeamShow extends React.Component{
           <textarea value={this.state.description}
                     placeholder="Click to add team description..."
                     onChange={this.changeDescription()}
+                    cols="50"
+                    rows="30"
             />
           </div>
         </div>
