@@ -14,7 +14,7 @@ User.create([
     email: "awesome@possums.com",
     password: "Possums-Are-Awesome"
   }
-]);
+])
 
 Team.destroy_all
 Team.create([
@@ -51,4 +51,11 @@ Team.create([
     name: "TBA",
     description: ""
   },
-]);
+])
+
+UserTeam.destroy_all
+users = User.all
+Team.all.each do |team|
+  UserTeam.create({user_id: users.sample.id, team_id: team.id})
+end
+
