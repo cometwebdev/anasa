@@ -9,4 +9,6 @@ class Team < ApplicationRecord
   has_many :members,
     through: :user_teams,
     source: :user
+
+  has_many :projects
 end

@@ -75,3 +75,14 @@ User.all.each do |user|
   UserTeam.create({user_id: user.id, team_id: Team.all.sample.id})
 end
 
+
+Project.destroy_all
+
+User.all.includes(:teams).each do |user|
+  Project.create(
+    {
+      owner_id: user.id,
+      name: "#{user.email}'s first project",
+      team_id: user.teams.first.id
+    });
+end
