@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 import { signup, login, logout } from './actions/session_actions';
-import { getTeams, getTeam, createTeam, updateTeam } from './actions/team_actions';
+import { getTeams, getTeam, createTeam, updateTeam, receiveTeams } from './actions/team_actions';
 
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.getTeam = getTeam;
   window.createTeam = createTeam;
   window.updateTeam = updateTeam;
-
+  window.receiveTeams = receiveTeams;
+  
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);
 });

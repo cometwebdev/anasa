@@ -6,3 +6,5 @@ bundle.js
 bundle.js.map
 
 /public/assets
+
+.byebug_history

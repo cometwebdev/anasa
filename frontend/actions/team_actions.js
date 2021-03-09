@@ -3,28 +3,46 @@ import * as APIUtil from '../util/team_api_util';
 export const RECEIVE_TEAMS = "RECEIVE_TEAMS";
 export const RECEIVE_TEAM = "RECEIVE_TEAM";
 
+// original receiveTeams
+// export const receiveTeams = (teams) => {
 
-export const receiveTeams = (teams) => {
+//   return {
+//     type: RECEIVE_TEAMS,
+//     teams
+//   };
+// };
 
+// new receiveTeams (in progress)
+export const receiveTeams = ({ teams, teammates }) => {
+  // debugger
   return {
     type: RECEIVE_TEAMS,
-    teams
+    teams,
+    teammates
   };
 };
 
-export const receiveTeam = (team) => {
+export const receiveTeam = ({ team, teammates }) => {
 
   return {
     type: RECEIVE_TEAM,
-    team
+    team,
+    teammates
   };
 };
 
+// original getTeams
+// export const getTeams = () => dispatch => {
 
+//   return APIUtil.getTeams()
+//         .then(receivedTeams => dispatch(receiveTeams(receivedTeams)));
+// };
+
+// new getTeams (in progress)
 export const getTeams = () => dispatch => {
 
   return APIUtil.getTeams()
-        .then(receivedTeams => dispatch(receiveTeams(receivedTeams)));
+        .then(payload => dispatch(receiveTeams(payload)));
 };
 
 export const getTeam = (teamId) => dispatch => {

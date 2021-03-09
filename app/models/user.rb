@@ -14,7 +14,11 @@ class User < ApplicationRecord
     through: :user_teams,
     source: :team
 
-    
+  has_many :teammates,
+    through: :teams,
+    source: :members
+
+
   #GAASPIRE
   def generate_unique_session_token
     token = SecureRandom::urlsafe_base64

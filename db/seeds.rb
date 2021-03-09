@@ -13,7 +13,23 @@ User.create([
   {
     email: "awesome@possums.com",
     password: "Possums-Are-Awesome"
-  }
+  },
+  {
+    email: "saucesome@possums.com",
+    password: "Possums-Are-Awesome"
+  },
+  {
+    email: "blossom@possums.com",
+    password: "Possums-Are-Awesome"
+  },
+  {
+    email: "wholesome@possums.com",
+    password: "Possums-Are-Awesome"
+  },
+  {
+    email: "totalsum@possums.com",
+    password: "Possums-Are-Awesome"
+  },
 ])
 
 Team.destroy_all
@@ -54,8 +70,8 @@ Team.create([
 ])
 
 UserTeam.destroy_all
-users = User.all
-Team.all.each do |team|
-  UserTeam.create({user_id: users.sample.id, team_id: team.id})
+
+User.all.each do |user|
+  UserTeam.create({user_id: user.id, team_id: Team.all.sample.id})
 end
 
