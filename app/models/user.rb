@@ -3,8 +3,19 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true
   validates :full_name, presence: true, allow_nil: true
-  #GAASPIRE
+  
+  
+  has_many :user_teams,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :UserTeam
+  
+  has_many :teams,
+    through: :user_teams,
+    source: :team
 
+    
+  #GAASPIRE
   def generate_unique_session_token
     token = SecureRandom::urlsafe_base64
     while User.find_by(session_token: token)
