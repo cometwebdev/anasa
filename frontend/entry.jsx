@@ -6,6 +6,8 @@ import Root from './components/root';
 import { signup, login, logout } from './actions/session_actions';
 import { getTeams, getTeam, createTeam, updateTeam, receiveTeams } from './actions/team_actions';
 import { getProject, getProjects, createProject, updateProject } from './util/project_api_util';
+import { receiveProject, receiveProjects } from './actions/project_actions';
+
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
   if(window.currentUser){
@@ -32,8 +34,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.updateTeam = updateTeam;
   window.receiveTeams = receiveTeams;
 
-  window.getProjects = getProjects;
-  window.getProject = getProject;
+  window.receiveProjects = receiveProjects;
+  window.receiveProject = receiveProject;
   window.createProject = createProject;
   window.updateProject = updateProject;
   

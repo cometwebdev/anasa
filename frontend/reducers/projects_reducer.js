@@ -12,7 +12,7 @@ const projectReducer = (oldState = {}, action) => {
     case RECEIVE_PROJECTS:
       let projectId;
       for (projectId in action.projects){
-        newState[projectId] = Object.merge(newState[projectId] || {}, action.projects[projectId]);
+        newState[projectId] = Object.assign(newState[projectId] || {}, action.projects[projectId]);
       }
       return newState;
     case RECEIVE_PROJECT:
