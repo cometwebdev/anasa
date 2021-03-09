@@ -10,21 +10,13 @@ class TeamShow extends React.Component{
   }
 
   componentDidMount(){
-    this.props.thunkGetTeam()
-    // .then(() => this.setState({description: this.props.description || ""}));
+    this.props.thunkGetTeam();
   }
 
 
   
   componentDidUpdate(){
     
-    // if (this.props.name != this.state.name){
-    //   this.setState({name: this.props.name});
-    //   this.props.thunkGetTeam()
-    //   .then(() => this.setState({description: this.props.description || ""}));
-    // }
-
-
     if  (this.props.name != this.state.name){
       if (this.state.name != "Loading Team Name..."
           && this.state.description != this.state.baseDescription){
@@ -49,13 +41,15 @@ class TeamShow extends React.Component{
   }
 
   componentWillUnmount(){
-    this.props.thunkUpdateTeam(
-      {
-        id: this.props.id,
-        name: this.props.name,
-        description: this.state.description
-      }
-    );
+    if (this.state.name != "Loading Team Name..."){
+      this.props.thunkUpdateTeam(
+        {
+          id: this.props.id,
+          name: this.props.name,
+          description: this.state.description
+        }
+      );
+    }
   }
 
   changeDescription(){
@@ -80,6 +74,9 @@ class TeamShow extends React.Component{
                     cols="50"
                     rows="30"
             />
+          {
+            this.props.teammates.map(teammate => <li key={teammate.id}>{teammate.email}</li>)
+          }
           </div>
         </div>
       </div>

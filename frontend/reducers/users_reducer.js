@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_TEAMS, RECEIVE_TEAM  } from '../actions/team_actions';
 
 const usersReducer = (oldState = {}, action) => {
@@ -11,6 +11,8 @@ const usersReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, action.teammates);
     case RECEIVE_TEAMS:
       return Object.assign({}, oldState, action.teammates);
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }

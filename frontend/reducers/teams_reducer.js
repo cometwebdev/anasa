@@ -3,6 +3,8 @@ import {
   RECEIVE_TEAM
 } from '../actions/team_actions';
 
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
+
 const teamReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
@@ -21,6 +23,8 @@ const teamReducer = (oldState = {}, action) => {
     case RECEIVE_TEAM:
       newState[action.team.id] = action.team;
       return newState;
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return oldState;
   };
