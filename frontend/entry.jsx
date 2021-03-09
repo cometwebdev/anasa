@@ -5,7 +5,7 @@ import Root from './components/root';
 
 import { signup, login, logout } from './actions/session_actions';
 import { getTeams, getTeam, createTeam, updateTeam, receiveTeams } from './actions/team_actions';
-
+import { getProject, getProjects, createProject, updateProject } from './util/project_api_util';
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
   if(window.currentUser){
@@ -31,6 +31,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.createTeam = createTeam;
   window.updateTeam = updateTeam;
   window.receiveTeams = receiveTeams;
+
+  window.getProjects = getProjects;
+  window.getProject = getProject;
+  window.createProject = createProject;
+  window.updateProject = updateProject;
   
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);
