@@ -1,7 +1,7 @@
 import React from 'react';
 import { createTeam } from '../../../../actions/team_actions';
 
-class TeamCreate extends React.Component {
+class TeamCreateForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -24,9 +24,11 @@ class TeamCreate extends React.Component {
   render(){
     return (
       <div className="create-team-form">
+        <h4>Create a new team:</h4>
         <form onSubmit={this.handleSubmit}>
           <input type="text"
                  value={this.state.name}
+                 onChange={this.update('name')}
           />
           <input type="submit"
                  value="Create Team"
@@ -38,4 +40,4 @@ class TeamCreate extends React.Component {
   }
 }
 
-export default CreateTeamForm;
+export default TeamCreateForm;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TeamCreateShowContainer from './team_create/team_create_form_container';
 
 class Sidebar extends React.Component {
   constructor(props){
@@ -26,6 +27,9 @@ class Sidebar extends React.Component {
               <span>{team.name}</span>
             </Link>
           ))}
+        </div>
+        <div>
+          <TeamCreateShowContainer />
         </div>
       </div>
     )

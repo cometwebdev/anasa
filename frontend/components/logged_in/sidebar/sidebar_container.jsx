@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Sidebar from './sidebar'
 
-
 import { getTeams } from '../../../actions/team_actions';
 
 
