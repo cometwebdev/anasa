@@ -5,7 +5,7 @@ class TeamCreateForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      name: 'Super Team'
+      name: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -18,7 +18,10 @@ class TeamCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createTeam({ name: this.state.name });
+    let name = this.state.name
+    if(typeof name === 'string' && name.length > 0) {
+      this.props.createTeam({ name });
+    }
   }
 
   render(){
