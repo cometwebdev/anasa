@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Sidebar from './sidebar'
 
 
-import { getTeams } from '../../actions/team_actions';
+import { getTeams } from '../../../actions/team_actions';
 
 
 const mapStateToProps = (state) => {

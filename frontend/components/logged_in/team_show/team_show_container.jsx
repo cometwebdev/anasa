@@ -2,8 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import HomeHeaderContainer from '../home_header_container'
-import SidebarContainer from '../sidebar_container';
+import HomeHeaderContainer from '../header/home_header_container'
+import SidebarContainer from '../sidebar/sidebar_container';
 
 import {
   updateTeam,
