@@ -18,3 +18,27 @@ export const receiveProject = project => {
     project
   }
 };
+
+export const getProjects = () => dispatch => {
+
+  return APIUtil.getProjects()
+         .then(projects => dispatch(receiveProjects(projects)));
+};
+
+export const getProject = (projectId) => dispatch => {
+
+  return APIUtil.getProject(projectId)
+          .then(project => dispatch(receiveProject(project)));
+};
+
+export const createProject = (project) => dispatch => {
+
+  return APIUtil.createProject(project)
+        .then(project => dispatch(receiveProject(project)));
+};
+
+export const updateProject = (project) => dispatch => {
+
+  return APIUtil.updateProject(project)
+        .then(project => dispatch(receiveProject(project)));
+};
