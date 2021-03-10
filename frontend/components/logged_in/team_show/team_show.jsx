@@ -74,9 +74,18 @@ class TeamShow extends React.Component{
                     cols="50"
                     rows="30"
             />
-          {
-            this.props.teammates.map(teammate => <li key={teammate.id}>{teammate.email}</li>)
-          }
+            <div>
+              <div>Team Members:</div>
+              {
+                this.props.teammates.map(teammate => <li key={teammate.id}>{teammate.email}</li>)
+              }
+            </div>
+            <div>
+              <div>Project Links:</div>
+              {
+                this.props.projects.map(prj => <li key={prj.id}>{prj.name}</li>)
+              }
+            </div>
           </div>
         </div>
       </div>

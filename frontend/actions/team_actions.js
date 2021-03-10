@@ -22,12 +22,13 @@ export const receiveTeams = ({ teams, teammates }) => {
   };
 };
 
-export const receiveTeam = ({ team, teammates }) => {
+export const receiveTeam = ({ team, teammates, projects }) => {
 
   return {
     type: RECEIVE_TEAM,
     team,
-    teammates
+    teammates,
+    projects
   };
 };
 

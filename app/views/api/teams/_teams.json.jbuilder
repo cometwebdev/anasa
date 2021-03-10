@@ -8,8 +8,6 @@ json.set! "teams" do
 end
 
 
-
-
 json.set! "teammates" do
   current_user.teammates.each do |teammate|
     json.set! teammate.id do 

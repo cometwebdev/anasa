@@ -4,11 +4,13 @@ import {
 } from "../actions/project_actions";
 
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
-
+import { RECEIVE_TEAM } from '../actions/team_actions';
 const projectReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
   switch(action.type){
+    case RECEIVE_TEAM:
+      //intentional fallthrough -- same functionality as RECEIVE_PROJECTS
     case RECEIVE_PROJECTS:
       let projectId;
       for (projectId in action.projects){
