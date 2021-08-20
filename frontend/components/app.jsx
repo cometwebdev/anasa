@@ -23,6 +23,9 @@ const App = () => (
       
       
       <ProtectedRoute exact path="/teams/:teamId" component={TeamShowContainer} />
+      {/* <ProtectedRoute exact path="/projects/:projectId" component={ProjectShowContainer} /> */}
+      
+      
       <ProtectedRoute path="/home" component={HomeContainer} />
       
       {/* Splash Page */}

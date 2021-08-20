@@ -3,10 +3,11 @@ import React from 'react';
 class TeamShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = { id: this.props.id,
-                   name: this.props.name,
-                   description: this.props.description || "",
-                   baseDescription: this.props.description || "" };
+    this.state = { description: this.props.description || "" };
+    // idea is have a baseState 
+    this.baseState = { description: "Loading description" };
+
+    this.saveDescription = this.saveDescription.bind(this);
   }
 
   componentDidMount(){
@@ -15,33 +16,21 @@ class TeamShow extends React.Component{
 
 
   
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
+    // https://stackoverflow.com/questions/30528348/setstate-inside-of-componentdidupdate
+
+    // compare if new props id != old props id 
+    //    not sure if need to update old Team description here or not
+    // if different ids -- then need to thunkGetTeam
+    //    does it make sense to use a loading/bufferring text here?
     
-    if  (this.props.name != this.state.name){
-      if (this.state.name != "Loading Team Name..."
-          && this.state.description != this.state.baseDescription){
-        this.props.thunkUpdateTeam(
-          {
-            id: this.state.id,
-            name: this.state.name,
-            description: this.state.description
-          }
-        );
-      }
-      this.setState({id: this.props.id})
-      this.setState({name: this.props.name});
-      this.setState({description: this.props.description || ""})
-      this.setState({baseDescription: this.props.baseDescription || ""})
-      this.props.thunkGetTeam();
-    }
-    else if (this.props.description && this.props.description!= this.state.baseDescription){
-      this.setState({description: this.props.description || ""})
-      this.setState({baseDescription: this.props.description || ""})
-    }
+    debugger
+
   }
 
-  componentWillUnmount(){
-    if (this.state.name != "Loading Team Name..."){
+  saveDescription(){
+    if (this.state.name !== "Loading Team Name..." &&
+        this.state.description !== this.props.description){
       this.props.thunkUpdateTeam(
         {
           id: this.props.id,
@@ -71,6 +60,7 @@ class TeamShow extends React.Component{
           <textarea value={this.state.description}
                     placeholder="Click to add team description..."
                     onChange={this.changeDescription()}
+                    onBlur={this.saveDescription()}
                     cols="50"
                     rows="30"
             />

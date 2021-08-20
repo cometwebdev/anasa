@@ -1,5 +1,4 @@
 import React from 'react';
-import { createTeam } from '../../../../actions/team_actions';
 
 class TeamCreateForm extends React.Component {
   constructor(props){
@@ -20,7 +19,8 @@ class TeamCreateForm extends React.Component {
     e.preventDefault();
     let name = this.state.name
     if(typeof name === 'string' && name.length > 0) {
-      this.props.createTeam({ name });
+      this.props.createTeam({ name })
+      this.setState({ name: "" });
     }
   }
 

@@ -11,6 +11,10 @@
 User.destroy_all
 User.create([
   {
+    email: "everything",
+    password: "everything"
+  },
+  {
     email: "awesome@possums.com",
     password: "Possums-Are-Awesome"
   },
@@ -70,6 +74,8 @@ Team.create([
 ])
 
 UserTeam.destroy_all
+
+# for testing -- make first user connected to all teams
 
 User.all.each do |user|
   UserTeam.create({user_id: user.id, team_id: Team.all.sample.id})

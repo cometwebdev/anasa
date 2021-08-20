@@ -32,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const teamId = ownProps.match.params.teamId
+  const teamId = ownProps.match.params.teamId;
   return {
     thunkGetTeam: () => dispatch(getTeam(teamId)),
     thunkUpdateTeam: (team) => dispatch(updateTeam(team))
