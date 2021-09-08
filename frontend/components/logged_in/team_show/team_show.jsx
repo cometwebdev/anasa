@@ -3,9 +3,11 @@ import React from 'react';
 class TeamShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = { description: this.props.description || "" };
+    this.state = { description: this.props.description || "",
+                   name: this.props.name
+                 };
     // idea is have a baseState 
-    this.baseState = { description: "Loading description" };
+    //this.baseState = { description: "Loading description" };
 
     this.saveDescription = this.saveDescription.bind(this);
   }
@@ -24,13 +26,24 @@ class TeamShow extends React.Component{
     // if different ids -- then need to thunkGetTeam
     //    does it make sense to use a loading/bufferring text here?
     
-    debugger
-
+    // if(this.props.id !== prevProps.id){
+    //   this.props.thunkGetTeam();
+    // }
+    if (this.props.name !== prevProps.name){
+      this.props.thunkGetTeam().then(
+        (res) => { this.setState({ description: res.team.description,
+                                    name: res.team.name    
+        })}
+      );
+    }
   }
 
   saveDescription(){
+    //debugger
     if (this.state.name !== "Loading Team Name..." &&
-        this.state.description !== this.props.description){
+        this.state.description !== this.props.description &&
+        this.state.description !== ""){
+      //debugger
       this.props.thunkUpdateTeam(
         {
           id: this.props.id,
@@ -42,9 +55,12 @@ class TeamShow extends React.Component{
   }
 
   changeDescription(){
-    return (e) => (
-      this.setState({ description: e.currentTarget.value })
-    );
+    return (e) => {
+      this.setState({ description: e.currentTarget.value });
+      // look into debouncing
+      // https://davidwalsh.name/javascript-debounce-function
+      this.saveDescription();
+    };
   }
 
   render(){
@@ -60,7 +76,7 @@ class TeamShow extends React.Component{
           <textarea value={this.state.description}
                     placeholder="Click to add team description..."
                     onChange={this.changeDescription()}
-                    onBlur={this.saveDescription()}
+                    
                     cols="50"
                     rows="30"
             />

@@ -16,6 +16,8 @@ import TeamShow from './team_show';
 const mapStateToProps = (state, ownProps) => {
   const teamId = ownProps.match.params.teamId;
   const team = state.entities.teams[teamId];
+  // loading team name doesn't make sense bc all team names should be loaded by the index action
+  // on teams controller
   const name = team ? team.name : "Loading Team Name...";
   const description = team ? team.description : undefined;
   const teammates = team ? team.teammateIds.map(mateId => state.entities.users[mateId]) : [];

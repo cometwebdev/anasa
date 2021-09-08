@@ -1,3 +1,6 @@
+# this seems inefficient on database requests, there probably is a better way
+#  to loop over and set things appropriately
+
 json.set! "team" do 
   json.extract! team, :id, :name, :description
   json.teammateIds team.members.map {|member| member.id}

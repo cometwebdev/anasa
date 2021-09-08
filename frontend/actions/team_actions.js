@@ -59,7 +59,7 @@ export const createTeam = (team) => dispatch => {
 };
 
 export const updateTeam = (team) => dispatch => {
-
+  //debugger
   return APIUtil.updateTeam(team)
         .then(receivedTeam => dispatch(receiveTeam(receivedTeam)));
 };
