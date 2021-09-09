@@ -7,8 +7,6 @@ class TeamShow extends React.Component{
                    name: this.props.name,
                    placeholder: "Loading team description..."
                  };
-    // idea is have a baseState 
-    //this.baseState = { description: "Loading description" };
 
     this.saveDescription = this.saveDescription.bind(this);
   }
@@ -68,7 +66,9 @@ class TeamShow extends React.Component{
   changeDescription(){
     return (e) => {
       this.setState({ description: e.currentTarget.value });
-      // look into debouncing
+      // still having an error of leaving off the last character, 
+      // but debouncing should fix that, see below:
+      //
       // https://davidwalsh.name/javascript-debounce-function
       this.saveDescription();
     };
