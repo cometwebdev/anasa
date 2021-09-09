@@ -4,7 +4,8 @@ class TeamShow extends React.Component{
   constructor(props){
     super(props);
     this.state = { description: this.props.description || "",
-                   name: this.props.name
+                   name: this.props.name,
+                   placeholder: "Loading team description..."
                  };
     // idea is have a baseState 
     //this.baseState = { description: "Loading description" };
@@ -13,7 +14,12 @@ class TeamShow extends React.Component{
   }
 
   componentDidMount(){
-    this.props.thunkGetTeam();
+    this.props.thunkGetTeam().then(
+      (res) => { this.setState({ description: res.team.description,
+        name: res.team.name,
+        placeholder: "Click to add team description..."    
+      })}
+    )
   }
 
 
@@ -30,9 +36,14 @@ class TeamShow extends React.Component{
     //   this.props.thunkGetTeam();
     // }
     if (this.props.name !== prevProps.name){
+      this.setState({ description: "",
+                      name: this.props.name,
+                      placeholder: "Loading team description..."
+      });
       this.props.thunkGetTeam().then(
         (res) => { this.setState({ description: res.team.description,
-                                    name: res.team.name    
+                                    name: res.team.name,
+                                    placeholder: "Click to add team description..."  
         })}
       );
     }
