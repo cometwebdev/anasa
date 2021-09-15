@@ -21,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   const name = team ? team.name : "Loading Team Name...";
   const description = team ? team.description : undefined;
   const teammates = team ? team.teammateIds.map(mateId => state.entities.users[mateId]) : [];
+  // change these into links to project pages
   const projects = team && team.projectIds ? team.projectIds.map(prjId => state.entities.projects[prjId]) : [];
   return {
     id: teamId,
