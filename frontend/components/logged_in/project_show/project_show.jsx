@@ -65,12 +65,13 @@ class ProjectShow extends React.Component{
   }
 
   render(){
+    debugger
     return (
       <div className="home-main">
         {this.props.sidebar}
         <div>
           {this.props.header}
-          <div className="TeamShow-main">
+          <div className="ProjectShow-main">
           <h3>
             { this.state.name }
           </h3>
