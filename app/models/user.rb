@@ -19,11 +19,13 @@ class User < ApplicationRecord
     source: :members
 
   has_many :projects,
+    through: :teams,
+    source: :projects
+
+  has_many :owned_projects,
     primary_key: :id,
     foreign_key: :owner_id,
     class_name: :Project
-
-
   #GAASPIRE
   def generate_unique_session_token
     token = SecureRandom::urlsafe_base64

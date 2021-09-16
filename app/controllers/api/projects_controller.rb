@@ -1,6 +1,7 @@
 class Api::ProjectsController < ApplicationController
 
   def index
+    # so these are projects only 
     @projects = current_user.projects
     render "api/projects/index"
   end

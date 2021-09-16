@@ -65,7 +65,6 @@ class ProjectShow extends React.Component{
   }
 
   render(){
-    debugger
     return (
       <div className="home-main">
         {this.props.sidebar}
