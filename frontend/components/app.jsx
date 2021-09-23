@@ -15,7 +15,7 @@ import SplashContainer from '../components/splash_and_404/splash_container';
 import HomeContainer from '../components/logged_in/home_container';
 import TeamShowContainer from '../components/logged_in/team_show/team_show_container';
 import ProjectShowContainer from '../components/logged_in/project_show/project_show_container';
-
+import ProjectCreationFormContainer from './logged_in/project_creation/project_creation_form_container';
 const App = () => (
   <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -23,8 +23,8 @@ const App = () => (
       
       
       <ProtectedRoute exact path="/teams/:teamId" component={TeamShowContainer} />
+      <ProtectedRoute exact path="/projects/new" component={ProjectCreationFormContainer} />
       <ProtectedRoute exact path="/projects/:projectId" component={ProjectShowContainer} />
-      
       
       <ProtectedRoute path="/home" component={HomeContainer} />
       

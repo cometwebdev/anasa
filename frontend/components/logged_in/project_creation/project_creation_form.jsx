@@ -6,9 +6,21 @@ class ProjectCreationForm extends React.Component {
     super(props);
     this.state = {
       name: '',
-      team_id: ''
+      team_id: '',
+      teams: Object.values(this.props.teams)
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.thunkGetTeams().then(
+      (res) => { 
+        debugger
+        this.setState({
+          teams: Object.values(res.teams)
+        })
+      }
+    );
   }
 
   update(field) {
@@ -40,6 +52,7 @@ class ProjectCreationForm extends React.Component {
   // }
 
   render(){
+    // debugger
     return (
       <div className="auth-form-container">
         <form onSubmit={this.handleSubmit} 
@@ -56,12 +69,12 @@ class ProjectCreationForm extends React.Component {
                     className="auth-input-field"
             >
               {
-                this.props.teams.map(team => <option value={team.id} key={team.id}>{team.name}</option>)
+                this.state.teams.map(team => <option value={team.id} key={team.id}>{team.name}</option>)
               }
             </ select>
           </div>
           <input type="submit" 
-                  value="Sign up"
+                  value="Create Project"
                   className="auth-form-submit"
           />
         </form>
