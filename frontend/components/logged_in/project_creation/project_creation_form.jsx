@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 class ProjectCreationForm extends React.Component {
   constructor(props){
     super(props);
+    this.teams = Object.values(this.props.teams);
     this.state = {
       name: '',
-      team_id: '',
-      teams: Object.values(this.props.teams)
+      team_id: this.props.id
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -15,9 +15,10 @@ class ProjectCreationForm extends React.Component {
   componentDidMount(){
     this.props.thunkGetTeams().then(
       (res) => { 
-        debugger
+        // debugger
+        this.teams = Object.values(res.teams);
         this.setState({
-          teams: Object.values(res.teams)
+          team_id: Object.keys(res.teams)[0]
         })
       }
     );
@@ -32,7 +33,11 @@ class ProjectCreationForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = Object.assign({}, this.state);
-    this.props.thunkCreateProject(project);
+    this.props.thunkCreateProject(project).then(
+      res => {
+        this.props.history.push(`/projects/${res.project.id}`);
+      }
+    );
   }
 
   // renderErrors() {
@@ -73,7 +78,7 @@ class ProjectCreationForm extends React.Component {
                         className="auth-input-field"
                 >
                   {
-                    this.state.teams.map(team => <option value={team.id} key={team.id}>{team.name}</option>)
+                    this.teams.map(team => <option value={team.id} key={team.id}>{team.name}</option>)
                   }
                 </ select>
               </div>

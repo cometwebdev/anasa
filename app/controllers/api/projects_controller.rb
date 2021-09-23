@@ -15,7 +15,7 @@ class Api::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.owner_id = current_user.id
     # should probably also make sure user belongs to the team that 
-    # the project is being saved to 
+    # the project is being saved to
     if @project.save
       render "api/projects/show"
     else
