@@ -6,7 +6,7 @@ import SidebarContainer from '../sidebar/sidebar_container';
 
 import { getProject } from '../../../actions/project_actions';
 
-import ProjectCreationForm from './project_creation_form';
+import ProjectEditForm from './project_edit_form';
 
 const mapStateToProps = ({ entities }) => {
   const projectId = ownProps.match.params.teamId;
