@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ProjectShow extends React.Component{
   constructor(props){
@@ -74,7 +75,11 @@ class ProjectShow extends React.Component{
           <h3>
             { this.state.name }
           </h3>
-          
+          <h5>
+            <Link to={`/projects/new`}>
+              <span>Create a New Project</span>
+            </Link>
+          </h5>
           </div>
         </div>
       </div>

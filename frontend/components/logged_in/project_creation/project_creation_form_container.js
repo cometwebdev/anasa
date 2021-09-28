@@ -10,7 +10,7 @@ import ProjectCreationForm from './project_creation_form';
 const mapStateToProps = ({ entities }) => {
   return { 
     teams: entities.teams,
-    header: <HomeHeaderContainer title="Team Show Page" />,
+    header: <HomeHeaderContainer title="Project Creation Page" />,
     sidebar: <SidebarContainer /> 
   };
 };
