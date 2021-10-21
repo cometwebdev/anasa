@@ -100,15 +100,22 @@ class TeamShow extends React.Component{
             </div>
             <div>
               <div>Project Links:</div>
-              {
-                this.props.projects.map(prj => 
-                  <li>
-                    <Link to={`/projects/${prj.id}`} key={prj.id}>
-                      <span>{prj.name}</span>
-                    </Link>
-                  </li>
-                )
-              }
+              <ul>
+                {
+                  this.props.projects.map(prj => 
+                    <li>
+                      <Link to={`/projects/${prj.id}`} key={prj.id}>
+                        <span>{prj.name}</span>
+                      </Link>
+                    </li>
+                  )
+                }
+                <li>
+                  <Link to={`/projects/new`} >
+                    Make a new project
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

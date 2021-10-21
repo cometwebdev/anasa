@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 class ProjectShow extends React.Component{
   constructor(props){
     super(props);
@@ -73,7 +74,8 @@ class ProjectShow extends React.Component{
           {this.props.header}
           <div className="ProjectShow-main">
           <h3>
-            { this.state.name }
+            { this.state.name } 
+            <Link to={`/projects/edit/${this.props.id}`}> Edit this project </Link>
           </h3>
           <h5>
             <Link to={`/projects/new`}>

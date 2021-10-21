@@ -4,27 +4,28 @@ import { connect } from 'react-redux';
 import HomeHeaderContainer from '../header/home_header_container'
 import SidebarContainer from '../sidebar/sidebar_container';
 
-import { getProject } from '../../../actions/project_actions';
+import { getProject, updateProject } from '../../../actions/project_actions';
 
 import ProjectEditForm from './project_edit_form';
 
-const mapStateToProps = ({ entities }) => {
+const mapStateToProps = ({ entities }, ownProps) => {
   const projectId = ownProps.match.params.teamId;
   //add default values for properties here so if project doesn't exist in state it will retain those values
-  const project = {} 
-  Object.assign(project, state.entities.projects[projectId]);
+  const project = {id: projectId, team_id: null};
+  Object.assign(project, entities.projects[projectId]);
   return { 
+    project,
     header: <HomeHeaderContainer title="Project Edit Page" />,
     sidebar: <SidebarContainer /> 
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   const projectId = ownProps.match.params.teamId;
   return {
-    thunkEditProject: project => dispatch(createProject(project)),
+    thunkEditProject: project => dispatch(updateProject(project)),
     thunkGetProject: () => dispatch(getProject(projectId))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectCreationForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectEditForm);

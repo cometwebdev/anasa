@@ -1,25 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class ProjectCreationForm extends React.Component {
+class ProjectEditForm extends React.Component {
   constructor(props){
     super(props);
-    this.teams = Object.values(this.props.teams);
     this.state = {
       name: '',
-      team_id: this.props.id
+      id: this.props.project.id
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
-    this.props.thunkGetTeams().then(
+    this.props.thunkGetProject().then(
       (res) => { 
         // debugger
-        this.teams = Object.values(res.teams);
         this.setState({
-          team_id: Object.keys(res.teams)[0]
-        })
+          name: res.project.name,
+          team_id: res.project.team_id
+        });
       }
     );
   }
@@ -33,7 +32,7 @@ class ProjectCreationForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = Object.assign({}, this.state);
-    this.props.thunkCreateProject(project).then(
+    this.props.thunkEditProject(project).then(
       res => {
         this.props.history.push(`/projects/${res.project.id}`);
       }
@@ -73,17 +72,9 @@ class ProjectCreationForm extends React.Component {
                         onChange={this.update('name')}
                         className="auth-input-field"
                 />
-                <span className="auth-input-label">Team</span>
-                <select onChange={this.update('team_id')}
-                        className="auth-input-field"
-                >
-                  {
-                    this.teams.map(team => <option value={team.id} key={team.id}>{team.name}</option>)
-                  }
-                </ select>
               </div>
               <input type="submit" 
-                      value="Create Project"
+                      value="Edit Project"
                       className="auth-form-submit"
               />
             </form>
@@ -94,4 +85,4 @@ class ProjectCreationForm extends React.Component {
   }
 }
 
-export default ProjectCreationForm;
+export default ProjectEditForm;
