@@ -26,6 +26,11 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :owner_id,
     class_name: :Project
+
+  # tasks -- tasks either assigned to user or on a team or personal task
+  # assigned tasks -- tasks assigned specifically to user?
+
+  
   #GAASPIRE
   def generate_unique_session_token
     token = SecureRandom::urlsafe_base64
