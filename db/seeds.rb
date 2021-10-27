@@ -92,3 +92,26 @@ User.all.includes(:teams).each do |user|
       team_id: user.teams.first.id
     });
 end
+
+Task.destroy_all
+
+tasks = [
+  "Make Presentation",
+  "Attend Meeting",
+  "Write Report",
+  "Follow Up With Client",
+  "Analyze Data"
+]
+
+User.all.each do |user|
+  user.projects.each do |project|
+    Task.create(
+      {
+        assignee_id: user.id,
+        name: tasks.sample,
+        taskable_type: "project",
+        taskable_id: project.id
+      }
+    )
+  end
+end
