@@ -109,7 +109,7 @@ User.all.each do |user|
       {
         assignee_id: user.id,
         name: tasks.sample,
-        taskable_type: "project",
+        taskable_type: "Project",
         taskable_id: project.id
       }
     )

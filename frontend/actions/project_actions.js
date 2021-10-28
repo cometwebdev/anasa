@@ -11,11 +11,12 @@ export const receiveProjects = projects => {
   }
 };
 
-export const receiveProject = project => {
+export const receiveProject = ({project, tasks}) => {
 
   return {
     type: RECEIVE_PROJECT,
-    project
+    project,
+    tasks
   }
 };
 

@@ -24,7 +24,7 @@ export const createTask = (task)  => {
 };
 
 
-export const updateTak = (task)  => {
+export const updateTask = (task)  => {
 
   return $.ajax({
     method: 'PATCH',

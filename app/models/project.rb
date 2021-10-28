@@ -11,4 +11,11 @@ class Project < ApplicationRecord
 
   belongs_to :team
 
+  has_many :tasks, 
+    as: :taskable,
+    primary_key: :id,
+    foreign_key: :taskable_id,
+    class_name: :Task
+
+
 end
