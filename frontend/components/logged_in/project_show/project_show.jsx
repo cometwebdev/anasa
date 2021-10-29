@@ -77,6 +77,15 @@ class ProjectShow extends React.Component{
             { this.state.name } 
             <Link to={`/projects/edit/${this.props.id}`}> Edit this project </Link>
           </h3>
+          <ul>
+          {
+                  this.props.tasks.map(task => 
+                    <li>
+                      <input type="text" value={task.name} />
+                    </li>
+                  )
+                }
+          </ul>
           <h5>
             <Link to={`/projects/new`}>
               <span>Create a New Project</span>

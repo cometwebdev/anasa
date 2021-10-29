@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   const prjId = ownProps.match.params.projectId;
   const prj = state.entities.projects[prjId];
   const name = prj ? prj.name : undefined;
-  const tasks = [];
+  const tasks = prj ? prj.taskIds.map(id => state.entities.tasks[id]) : [];
   return {
     id: prjId,
     header: <HomeHeaderContainer title="Project Show Page" />,

@@ -16,10 +16,9 @@ const taskReducer = (oldState = {}, action) => {
     case RECEIVE_PROJECT:
       //intentional fallthrough -- same functionality as RECEIVE_PROJECTS
     case RECEIVE_TASKS:
-      debugger
-      let task;
-      for (task of action.tasks){
-        newState[task.id] = Object.assign(newState[task.id] || {}, task);
+      let taskId;
+      for (taskId in action.tasks){
+        newState[taskId] = Object.assign(newState[taskId] || {}, action.tasks[taskId]);
       }
       return newState;
     case RECEIVE_TASK:

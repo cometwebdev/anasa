@@ -12,17 +12,14 @@ const projectReducer = (oldState = {}, action) => {
     case RECEIVE_TEAM:
       //intentional fallthrough -- same functionality as RECEIVE_PROJECTS
     case RECEIVE_PROJECTS:
-      // let projectId;
-      // for (projectId in action.projects){
-      //   newState[projectId] = Object.assign(newState[projectId] || {}, action.projects[projectId]);
-      // }
-
-      let project;
-      for (project of action.projects){
-        newState[project.id] = Object.assign(newState[project.id] || {}, project);
+      let projectId;
+      for (projectId in action.projects){
+        newState[projectId] = Object.assign(newState[projectId] || {}, action.projects[projectId]);
       }
       return newState;
     case RECEIVE_PROJECT:
+      let project = action.project;
+      project.taskIds = Object.keys(action.tasks) || [];
       newState[action.project.id] = action.project;
       return newState;
     case LOGOUT_CURRENT_USER:
