@@ -8,7 +8,6 @@ class TeamShow extends React.Component{
                    name: this.props.name,
                    placeholder: "Loading team description..."
                  };
-
     this.saveDescription = this.saveDescription.bind(this);
   }
 

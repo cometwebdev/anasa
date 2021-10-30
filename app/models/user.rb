@@ -27,6 +27,8 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :Project
 
+  
+
   # tasks -- tasks either assigned to user or on a team or personal task
   # assigned tasks -- tasks assigned specifically to user?
 

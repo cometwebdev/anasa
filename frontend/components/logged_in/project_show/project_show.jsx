@@ -7,35 +7,45 @@ class ProjectShow extends React.Component{
     super(props);
     this.state = {
       name: this.props.name,
-      placeholder: "Loading project name..."
+      placeholder: "Loading project name...",
+      tasks:{}
     };
 
     this.saveName = this.saveName.bind(this);
+    this.saveTask = this.saveTask.bind(this);
   }
 
   componentDidMount(){
     this.props.thunkGetProject().then(
       (res) => { 
-        this.setState({
+        debugger
+        const newState = {
           name: res.project.name,
           placeholder: "Click to add Project Name"
-        })
+        };
+        Object.assign(newState, res.tasks);
+
+        this.setState(newState);
       }
-    )
+    );
   }
 
   componentDidUpdate(prevProps, prevState){
     if (this.props.name !== prevProps.name){
       this.setState({ 
         name: this.props.name, 
-        placeholder: "Loading project name..."
+        placeholder: "Loading project name...",
+        tasks: []
       });
       this.props.thunkGetProject().then(
         (res) => {
-          this.setState({
+          const newState = {
             name: res.project.name,
             placeholder: "Click to add Project Name"
-          })
+          };
+          Object.assign(newState, res.tasks);
+
+          this.setState(newState);
         }
       );
     }
@@ -66,6 +76,23 @@ class ProjectShow extends React.Component{
     }
   }
 
+  changeTask(id){
+    return (e) => {
+      const newTask = this.state[id];
+      newTask.name = e.currentTarget.value;
+      this.setState({[id]: newTask});
+      this.saveTask(id);
+    }
+  }
+
+  saveTask(id){
+    if(this.state[id].name !== this.props.tasks[id].name &&
+       this.state[id].name !== ""
+      ){
+        this.props.thunkUpdateTask(this.state[id]);
+    }
+  }
+
   render(){
     return (
       <div className="home-main">
@@ -78,13 +105,16 @@ class ProjectShow extends React.Component{
             <Link to={`/projects/edit/${this.props.id}`}> Edit this project </Link>
           </h3>
           <ul>
-          {
-                  this.props.tasks.map(task => 
-                    <li>
-                      <input type="text" value={task.name} />
-                    </li>
-                  )
-                }
+            {
+              this.props.tasks.map(task => 
+                <li>
+                  <input type="text" 
+                         value={this.state[task.id] ? this.state[task.id].name : ""}
+                         onChange={this.changeTask(task.id)}
+                  />
+                </li>
+              )
+            }
           </ul>
           <h5>
             <Link to={`/projects/new`}>

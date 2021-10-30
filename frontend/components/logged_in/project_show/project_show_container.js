@@ -10,13 +10,19 @@ import {
   getProject
 } from '../../../actions/project_actions';
 
+import {
+  updateTask,
+  createTask
+} from '../../../actions/task_actions';
+
+
 import ProjectShow from './project_show';
 
 const mapStateToProps = (state, ownProps) => {
   const prjId = ownProps.match.params.projectId;
   const prj = state.entities.projects[prjId];
   const name = prj ? prj.name : undefined;
-  const tasks = prj ? prj.taskIds.map(id => state.entities.tasks[id]) : [];
+  const tasks = prj && prj.taskIds ? prj.taskIds.map(id => state.entities.tasks[id]) : [];
   return {
     id: prjId,
     header: <HomeHeaderContainer title="Project Show Page" />,
@@ -30,7 +36,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const projectId = ownProps.match.params.projectId;
   return {
     thunkGetProject: () => dispatch(getProject(projectId)),
-    thunkUpdateProject: (prj) => dispatch(updateProject(prj))
+    thunkUpdateProject: prj => dispatch(updateProject(prj)),
+    thunkUpdateTask: task => dispatch(updateTask(task)),
+    thunkCreateTask: task => dispatch(createTask(task))
   };
 };
 

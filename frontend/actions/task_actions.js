@@ -37,7 +37,7 @@ export const createTask = (task) => dispatch => {
         .then(() => dispatch(receiveTask(task)));
 };
 
-export const updatetask = (task) => dispatch => {
+export const updateTask = (task) => dispatch => {
 
   return APIUtil.updateTask(task)
         .then(() => dispatch(receiveTask(task)));
