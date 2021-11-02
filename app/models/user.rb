@@ -27,6 +27,9 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :Project
 
+  has_many :modifiable_tasks,
+    through: :projects,
+    source: :tasks
   
 
   # tasks -- tasks either assigned to user or on a team or personal task
