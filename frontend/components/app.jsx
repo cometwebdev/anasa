@@ -29,7 +29,7 @@ const App = () => (
       <ProtectedRoute exact path="/projects/new" component={ProjectCreationFormContainer} />
       <ProtectedRoute exact path="/projects/edit/:teamId" component={ProjectEditFormContainer} />
       <ProtectedRoute exact path="/projects/:projectId" component={ProjectShowContainer} />
-      
+      <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
       <ProtectedRoute path="/home" component={HomeContainer} />
       
       {/* Splash Page */}
