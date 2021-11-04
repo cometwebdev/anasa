@@ -112,6 +112,8 @@ class ProjectShow extends React.Component{
                          value={this.state[task.id] ? this.state[task.id].name : ""}
                          onChange={this.changeTask(task.id)}
                   />
+                  <p onClick={() => {this.props.removeTask(task.id)}}> X
+                  </p>
                 </li>
               )
             }

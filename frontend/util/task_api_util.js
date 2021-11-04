@@ -32,3 +32,10 @@ export const updateTask = (task)  => {
     data: { task }
   });
 };
+
+export const deleteTask = (taskId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/tasks/${taskId}`
+  });
+}

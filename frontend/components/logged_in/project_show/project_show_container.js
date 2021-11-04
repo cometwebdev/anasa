@@ -12,7 +12,8 @@ import {
 
 import {
   updateTask,
-  createTask
+  createTask,
+  deleteTask
 } from '../../../actions/task_actions';
 
 
@@ -38,7 +39,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     thunkGetProject: () => dispatch(getProject(projectId)),
     thunkUpdateProject: prj => dispatch(updateProject(prj)),
     thunkUpdateTask: task => dispatch(updateTask(task)),
-    thunkCreateTask: task => dispatch(createTask(task))
+    thunkCreateTask: task => dispatch(createTask(task)),
+    thunkDeleteTask: taskId => dispatch(deleteTask(taskId)),
   };
 };
 
