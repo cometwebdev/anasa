@@ -23,7 +23,9 @@ class UserShow extends React.Component{
       this.saveDescription();
     };
   }
-  componentDidMount(){};
+  componentDidMount(){
+    // fetch user description and update state here
+  };
   render(){
     return (
       <div>
