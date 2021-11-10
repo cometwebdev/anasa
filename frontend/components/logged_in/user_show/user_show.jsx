@@ -4,33 +4,33 @@ import { Link } from 'react-router-dom';
 class UserShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = { description: this.props.description || "",
+    this.state = { aboutMe: this.props.aboutMe || "",
                  };
-    this.saveDescription = this.saveDescription.bind(this);
+    this.saveAboutMe = this.saveAboutMe.bind(this);
   }
 
-  saveDescription(){
+  saveAboutMe(){
     
   }
 
-  changeDescription(){
+  changeAboutMe(){
     return (e) => {
-      this.setState({ description: e.currentTarget.value });
+      this.setState({ aboutMe: e.currentTarget.value });
       // still having an error of leaving off the last character, 
       // but debouncing should fix that, see below:
       //
       // https://davidwalsh.name/javascript-debounce-function
-      this.saveDescription();
+      this.saveAboutMe();
     };
   }
   componentDidMount(){
-    // fetch user description and update state here
+    // fetch user aboutMe and update state here
   };
   render(){
     return (
       <div>
-        <textarea onChange={this.changeDescription}
-                  value={this.state.description}
+        <textarea onChange={this.changeAboutMe}
+                  value={this.state.aboutMe}
         />
       </div>
       
