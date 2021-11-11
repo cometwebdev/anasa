@@ -12,27 +12,33 @@ User.destroy_all
 User.create([
   {
     email: "everything",
-    password: "everything"
+    password: "everything",
+    about_me: "I am everything"
   },
   {
     email: "awesome@possums.com",
-    password: "Possums-Are-Awesome"
+    password: "Possums-Are-Awesome",
+    about_me: "Possums are great"
   },
   {
     email: "saucesome@possums.com",
-    password: "Possums-Are-Awesome"
+    password: "Possums-Are-Awesome",
+    about_me: "Relish is best sauce"
   },
   {
     email: "blossom@possums.com",
-    password: "Possums-Are-Awesome"
+    password: "Possums-Are-Awesome",
+    about_me: "Pokemon Forever"
   },
   {
     email: "wholesome@possums.com",
-    password: "Possums-Are-Awesome"
+    password: "Possums-Are-Awesome",
+    about_me: "I love to help, please talk to me!"
   },
   {
     email: "totalsum@possums.com",
-    password: "Possums-Are-Awesome"
+    password: "Possums-Are-Awesome",
+    about_me: "Algorithms get things done better"
   },
 ])
 
