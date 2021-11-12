@@ -25,6 +25,9 @@ class UserShow extends React.Component{
   }
   componentDidMount(){
     // fetch user aboutMe and update state here
+    this.props.thunkGetUser().then(
+      payload => {this.setState({ aboutMe: payload.aboutMe })}
+    );
   };
   render(){
     return (

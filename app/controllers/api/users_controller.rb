@@ -11,6 +11,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    # unsafe to allow any user to find any other user, but will test for now
+    @user = User.find_by(id: params[:id]) || User.new
     render "api/users/show"
   end
 

@@ -17,7 +17,7 @@ import TeamShowContainer from '../components/logged_in/team_show/team_show_conta
 import ProjectShowContainer from '../components/logged_in/project_show/project_show_container';
 import ProjectCreationFormContainer from './logged_in/project_creation/project_creation_form_container';
 import ProjectEditFormContainer from './logged_in/project_edit/project_edit_form_container';
-
+import UserShowContainer from './logged_in/user_show/user_show_container'
 
 const App = () => (
   <Switch>
