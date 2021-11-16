@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   // add user api util, actions, reducer on frontend
   // add user controller get description on backend and make way to modify description
   const userId = ownProps.match.params.userId;
-  debugger
   return {
     thunkGetUser: () => dispatch(getUser(userId)),
     //thunkUpdateTeam: (team) => dispatch(updateTeam(team))

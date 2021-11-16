@@ -18,7 +18,6 @@ class ProjectShow extends React.Component{
   componentDidMount(){
     this.props.thunkGetProject().then(
       (res) => { 
-        debugger
         const newState = {
           name: res.project.name,
           placeholder: "Click to add Project Name"
