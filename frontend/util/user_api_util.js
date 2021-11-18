@@ -6,3 +6,12 @@ export const getUser = (userId) => {
   })
 }
 
+export const getUser = (user) => {
+  
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/users/${user.id}`,
+    data: { user }
+  })
+}
+
