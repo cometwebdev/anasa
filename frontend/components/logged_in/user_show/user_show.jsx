@@ -10,7 +10,9 @@ class UserShow extends React.Component{
   }
 
   saveAboutMe(){
-    
+    const user = this.props.user;
+    user.aboutMe = this.state.aboutMe;
+    this.props.thunkUpdateUser(user);
   }
 
   changeAboutMe(){
@@ -27,7 +29,6 @@ class UserShow extends React.Component{
     // fetch user aboutMe and update state here
     this.props.thunkGetUser().then(
       payload => {
-        debugger;
         this.setState({ aboutMe: payload.user.about_me });
       }
     );

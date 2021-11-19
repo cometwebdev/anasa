@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 import UserShow from "./user_show";
 
 import {
-  getUser 
+  getUser,
+  updateUser
 } from '../../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   // make use of userId param from route here
   // 
-  return {};
+  const user = state.entities.users[ownProps.match.params.userId];
+  return { user };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -20,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const userId = ownProps.match.params.userId;
   return {
     thunkGetUser: () => dispatch(getUser(userId)),
-    //thunkUpdateTeam: (team) => dispatch(updateTeam(team))
+    thunkUpdateUser: (user) => dispatch(updateUser(user)),
   };
 }
 
