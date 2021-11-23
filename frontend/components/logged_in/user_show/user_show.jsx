@@ -35,13 +35,23 @@ class UserShow extends React.Component{
   };
   render(){
     return (
+    <div className="home-main">
+      {this.props.sidebar}
       <div>
-        <textarea onChange={this.changeAboutMe}
-                  value={this.state.aboutMe}
-        />
+        {this.props.header}
+        <div className="TeamShow-main">
+        <h3>
+          { this.props.name }
+        </h3>
+          <div>
+            <textarea onChange={this.changeAboutMe}
+                      value={this.state.aboutMe}
+            />
+        </div>
       </div>
-      
-    );
+    </div>
+  </div>
+)
   }
 }
 export default UserShow;

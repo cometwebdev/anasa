@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import UserShow from "./user_show";
+import HomeHeaderContainer from '../header/home_header_container'
+import SidebarContainer from '../sidebar/sidebar_container';
 
 import {
   getUser,
@@ -13,7 +15,10 @@ const mapStateToProps = (state, ownProps) => {
   // make use of userId param from route here
   // 
   const user = state.entities.users[ownProps.match.params.userId];
-  return { user };
+  return { user,
+           header: <HomeHeaderContainer title="Team Show Page" />,
+           sidebar: <SidebarContainer />,
+   };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
