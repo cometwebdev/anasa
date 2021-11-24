@@ -20,6 +20,8 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.nil?
       render json: "No user found", status: 404
+    elsif @user.id != current_user.id
+      render json: "Cannot modify another users profile", status: 422
     elsif @user.update(about_me: user_params[:about_me])
       render "api/users/show"
     else
