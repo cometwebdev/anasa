@@ -16,8 +16,19 @@ class Api::UsersController < ApplicationController
     render "api/users/show"
   end
 
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      render json: "No user found", status: 404
+    elsif @user.update(about_me: user_params[:about_me])
+      render "api/users/show"
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :about_me)
   end
 end

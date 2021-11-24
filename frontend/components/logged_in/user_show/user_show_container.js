@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   // 
   const user = state.entities.users[ownProps.match.params.userId];
   return { user,
-           header: <HomeHeaderContainer title="Team Show Page" />,
+           header: <HomeHeaderContainer title="User Profile Page" />,
            sidebar: <SidebarContainer />,
    };
 }

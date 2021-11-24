@@ -17,5 +17,5 @@ export const getUser = (userId) => dispatch => {
 export const updateUser = (user) => dispatch => {
   //debugger
   return APIUtil.updateUser(user)
-        .then(receivedUser => dispatch(receiveTeam(receivedUser)));
+        .then(receivedUser => dispatch(receiveUser(receivedUser)));
 };
