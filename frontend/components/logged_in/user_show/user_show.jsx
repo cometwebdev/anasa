@@ -30,7 +30,10 @@ class UserShow extends React.Component{
     // fetch user aboutMe and update state here
     this.props.thunkGetUser().then(
       payload => {
-        this.setState({ aboutMe: payload.user.about_me });
+        this.setState({ 
+          aboutMe: payload.user.about_me, 
+          email: payload.user.email
+        });
       }
     );
   }
@@ -43,7 +46,7 @@ class UserShow extends React.Component{
         {this.props.header}
         <div className="TeamShow-main">
         <h3>
-          { this.props.name }
+          { this.state.email ?  `${this.state.email}'s Page` : this.props.name }
         </h3>
           <div>
             <textarea onChange={this.changeAboutMe()}

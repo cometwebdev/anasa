@@ -15,9 +15,12 @@ const mapStateToProps = (state, ownProps) => {
   // make use of userId param from route here
   // 
   const user = state.entities.users[ownProps.match.params.userId];
+  debugger
+  const name = user ? `${user.email}'s Page` : "User Profile Page";
   return { user,
            header: <HomeHeaderContainer title="User Profile Page" />,
            sidebar: <SidebarContainer />,
+           name
    };
 }
 
