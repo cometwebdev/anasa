@@ -55,6 +55,7 @@ class UserShow extends React.Component{
         </div>
       </div>
     </div>
+    <Link to={`\\users\\${1}`}>Go to your profile<Link />
   </div>
 )
   }
