@@ -44,7 +44,7 @@ class UserShow extends React.Component{
       {this.props.sidebar}
       <div>
         {this.props.header}
-        <div className="TeamShow-main">
+        <div className="UserShow-main">
         <h3>
           { this.state.email ?  `${this.state.email}'s Page` : this.props.name }
         </h3>
