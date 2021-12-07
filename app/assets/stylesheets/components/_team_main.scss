@@ -1,8 +1,42 @@
 .TeamShow-main {
   margin-top: 50px;
   margin-left: 10px;
+  padding-left: 30px;
+
   width: 60%;
   display: flex;
   flex-direction: column;
 
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.link span {
+  //color 
+  color: $user-auth-link;
+  //display
+  margin-left: 8px;
+  //typography
+  font-size: 13px;
+}
+
+.link span:hover {
+  //typography
+  text-decoration: underline;
+}
+
+.prj-create-link {
+  span {
+    //color 
+    color: purple;
+    //display
+    margin-left: 8px;
+    //typography
+    font-size: 13px;
+  }
+  
+  span:hover {
+    //typography
+    text-decoration: underline;
+  }
 }

@@ -81,37 +81,37 @@ class TeamShow extends React.Component{
         <div>
           {this.props.header}
           <div className="TeamShow-main">
-          <h3>
-            { this.props.name }
-          </h3>
-          <textarea value={this.state.description}
-                    placeholder="Click to add team description..."
-                    onChange={this.changeDescription()}
-                    
-                    cols="50"
-                    rows="30"
-            />
-            <div>
+            <h3>
+              { this.props.name }
+            </h3>
+            <textarea value={this.state.description}
+                      placeholder="Click to add team description..."
+                      onChange={this.changeDescription()}
+                      
+                      cols="50"
+                      rows="30"
+              />
+            <div className="home-member-links">
               <div>Team Members:</div>
               {
                 this.props.teammates.map(teammate => <li key={teammate.id}>{teammate.email}</li>)
               }
             </div>
-            <div>
+            <div className="home-prj-links">
               <div>Project Links:</div>
               <ul>
                 {
                   this.props.projects.map(prj => 
-                    <li>
+                    <li className="link">
                       <Link to={`/projects/${prj.id}`} key={prj.id}>
                         <span>{prj.name}</span>
                       </Link>
                     </li>
                   )
                 }
-                <li>
+                <li className="prj-create-link">
                   <Link to={`/projects/new`} >
-                    Make a new project
+                    <span> Make a new project </ span>
                   </Link>
                 </li>
               </ul>
