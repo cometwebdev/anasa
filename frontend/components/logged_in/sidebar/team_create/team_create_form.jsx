@@ -26,9 +26,11 @@ class TeamCreateForm extends React.Component {
 
   render(){
     return (
-      <div className="create-team-form">
+      <div className="create-team-container">
         <h4>Create a new team:</h4>
-        <form onSubmit={this.handleSubmit}>
+        <form
+          className="create-team-form" 
+          onSubmit={this.handleSubmit}>
           <input type="text"
                  value={this.state.name}
                  onChange={this.update('name')}
