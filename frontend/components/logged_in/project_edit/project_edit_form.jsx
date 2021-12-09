@@ -62,7 +62,7 @@ class ProjectEditForm extends React.Component {
         {this.props.sidebar}
         <div>
           {this.props.header}
-          <div className="auth-form-container">
+          <div className="prj-edit-form-container">
             <form onSubmit={this.handleSubmit} 
                   className="auth-form">
               <div className="auth-inputs">

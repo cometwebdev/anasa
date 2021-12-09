@@ -19,7 +19,7 @@ const projectReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_PROJECT:
       let project = action.project;
-      project.taskIds = Object.keys(action.tasks) || [];
+      project.taskIds = action.tasks ? Object.keys(action.tasks) : [];
       newState[action.project.id] = action.project;
       return newState;
     case LOGOUT_CURRENT_USER:
