@@ -84,7 +84,7 @@ class ProjectCreationForm extends React.Component {
               </div>
               <input type="submit" 
                       value="Create Project"
-                      className="auth-form-submit"
+                      className="project-create-submit"
               />
             </form>
           </div>
