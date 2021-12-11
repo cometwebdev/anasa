@@ -7,7 +7,9 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = current_user.projects.find_by(id: params[:id]) || Project.new
+    # add following line back in when we have redirects for who has access to what
+    #@project = current_user.projects.find_by(id: params[:id]) || Project.new
+    @project = Project.find_by(id: params[:id])
     render "api/projects/show"
   end
 

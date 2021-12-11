@@ -75,6 +75,11 @@ class ProjectShow extends React.Component{
     }
   }
 
+  addTask(){
+    return (e) => {
+      this.props.thunkCreateTask({name: e.currentTarget.value});
+    }
+  }
   changeTask(id){
     return (e) => {
       const newTask = this.state[id];
@@ -116,6 +121,10 @@ class ProjectShow extends React.Component{
                 </li>
               )
             }
+            <li>
+              <input type="text" />
+              <input type="submit" />
+            </li>
           </ul>
           <h5>
             <Link to={`/projects/new`} className="team-create-submit">
