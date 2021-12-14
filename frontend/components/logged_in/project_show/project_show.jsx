@@ -8,7 +8,8 @@ class ProjectShow extends React.Component{
     this.state = {
       name: this.props.name,
       placeholder: "Loading project name...",
-      tasks:{}
+      tasks:{},
+      newTaskText: ""
     };
 
     this.saveName = this.saveName.bind(this);
@@ -34,15 +35,16 @@ class ProjectShow extends React.Component{
       this.setState({ 
         name: this.props.name, 
         placeholder: "Loading project name...",
-        tasks: []
+        tasks: {}
       });
       this.props.thunkGetProject().then(
         (res) => {
           const newState = {
             name: res.project.name,
-            placeholder: "Click to add Project Name"
+            placeholder: "Click to add Project Name",
+            tasks: {}
           };
-          Object.assign(newState, res.tasks);
+          Object.assign(newState.tasks, res.tasks);
 
           this.setState(newState);
         }
@@ -77,12 +79,17 @@ class ProjectShow extends React.Component{
 
   addTask(){
     return (e) => {
-      this.props.thunkCreateTask({name: e.currentTarget.value});
+      this.props.thunkCreateTask({
+        name: e.currentTarget.value,
+        taskable_type: "project",
+        taskable_id: this.props.id
+      });
     }
   }
+
   changeTask(id){
     return (e) => {
-      const newTask = this.state[id];
+      const newTask = this.state.tasks[id];
       newTask.name = e.currentTarget.value;
       this.setState({[id]: newTask});
       this.saveTask(id);
@@ -90,14 +97,15 @@ class ProjectShow extends React.Component{
   }
 
   saveTask(id){
-    if(this.state[id].name !== this.props.tasks[id].name &&
-       this.state[id].name !== ""
+    if(this.state.tasks[id].name !== this.props.tasks[id].name &&
+       this.state.tasks[id].name !== ""
       ){
-        this.props.thunkUpdateTask(this.state[id]);
+        this.props.thunkUpdateTask(this.state.tasks[id]);
     }
   }
 
   render(){
+    debugger
     return (
       <div className="home-main">
         {this.props.sidebar}
@@ -116,13 +124,16 @@ class ProjectShow extends React.Component{
                          value={this.state[task.id] ? this.state[task.id].name : ""}
                          onChange={this.changeTask(task.id)}
                   />
-                  <p onClick={() => {this.props.removeTask(task.id)}}> X
+                  <p onClick={() => {this.props.thunkDeleteTask(task.id)}}> X
                   </p>
                 </li>
               )
             }
             <li>
-              <input type="text" />
+              <input type="text" 
+                     value={this.state.newTaskText}
+                     onChange={()=>{}}
+               />
               <input type="submit" />
             </li>
           </ul>

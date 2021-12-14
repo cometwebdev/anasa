@@ -21,7 +21,7 @@ class Api::TasksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @task = current_user.tasks.find_by(id: params[:id])
     if @task.nil?
       render json: "No task found", status: 404

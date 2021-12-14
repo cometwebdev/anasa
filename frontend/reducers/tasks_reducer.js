@@ -13,7 +13,7 @@ import {
 const taskReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
-  debugger
+  // debugger
   switch(action.type){
     case RECEIVE_PROJECT:
       //intentional fallthrough -- same functionality as RECEIVE_PROJECTS
