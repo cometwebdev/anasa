@@ -4,17 +4,14 @@ import { connect } from 'react-redux';
 
 import HomeHeaderContainer from '../header/home_header_container'
 import SidebarContainer from '../sidebar/sidebar_container';
+import ProjectTasksContainer from './project_tasks/project_tasks_container';
 
 import {
   updateProject,
   getProject
 } from '../../../actions/project_actions';
 
-import {
-  updateTask,
-  createTask,
-  deleteTask
-} from '../../../actions/task_actions';
+
 
 
 import ProjectShow from './project_show';
@@ -23,13 +20,14 @@ const mapStateToProps = (state, ownProps) => {
   const prjId = ownProps.match.params.projectId;
   const prj = state.entities.projects[prjId];
   const name = prj ? prj.name : undefined;
-  const tasks = prj && prj.taskIds ? prj.taskIds.map(id => state.entities.tasks[id]) : [];
+  
+  
   return {
     id: prjId,
     header: <HomeHeaderContainer title="Project Show Page" />,
     sidebar: <SidebarContainer />,
     name,
-    tasks
+    tasks: <ProjectTasksContainer id={prjId} />
   };
 }
 
@@ -38,9 +36,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     thunkGetProject: () => dispatch(getProject(projectId)),
     thunkUpdateProject: prj => dispatch(updateProject(prj)),
-    thunkUpdateTask: task => dispatch(updateTask(task)),
-    thunkCreateTask: task => dispatch(createTask(task)),
-    thunkDeleteTask: taskId => dispatch(deleteTask(taskId)),
   };
 };
 

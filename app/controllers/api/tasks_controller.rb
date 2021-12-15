@@ -11,7 +11,8 @@ class Api::TasksController < ApplicationController
   end
 
   def update
-    @task = current_user.tasks.find_by(id: params[:id]) || current_user.modifiable_tasks.find_by(id: params[:id])
+    #@task = current_user.tasks.find_by(id: params[:id]) || current_user.modifiable_tasks.find_by(id: params[:id])
+    @task = Task.find_by(id: params[:id])
     if @task.nil?
       render json: "No task found", status: 404
     elsif @task.update(task_params)
@@ -22,7 +23,9 @@ class Api::TasksController < ApplicationController
   end
 
   def destroy
-    @task = current_user.tasks.find_by(id: params[:id])
+    #@task = current_user.tasks.find_by(id: params[:id])
+    @task = Task.find_by(id: params[:id])
+
     if @task.nil?
       render json: "No task found", status: 404
     else
