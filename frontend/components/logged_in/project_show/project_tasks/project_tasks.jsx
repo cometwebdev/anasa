@@ -6,7 +6,9 @@ class ProjectTasks extends React.Component{
   constructor(props){
     super(props);
     // tasks -> id is key, value is text 
-    this.state = {};
+    this.state = {
+      newTaskName: "",
+    };
     Object.assign(this.state, this.props.tasks);
     //debugger
     this.saveTask = this.saveTask.bind(this);
@@ -21,19 +23,23 @@ class ProjectTasks extends React.Component{
   }
 
   addTask(){
-    return (e) => {
+    return () => {
       this.props.thunkCreateTask({
-        name: e.currentTarget.value,
+        name: this.state.newTaskName,
         taskable_type: "project",
         taskable_id: this.props.id
-      });
+      }).then(
+        () => { this.setState({"newTaskName": ""})}
+      );
     }
   }
 
   deleteTask(id){
-    console.log("hello")
+    //console.log("hello")
     return () =>{
-      this.props.thunkDeleteTask(id);
+      // when I delete a task, do I need to change projectIds in the projects reducer
+      // for the corresponding project?
+      this.props.thunkDeleteTask(this.state[id]);
     }
   }
 
@@ -46,13 +52,18 @@ class ProjectTasks extends React.Component{
     }
   }
 
+  changeNewTask(){
+    //later on can do more fancy things like + symbol to create new task on frontend side
+    //and then treat new task like any other, but for now just have form
+    return (e) => {
+      this.setState({"newTaskName": e.currentTarget.value});
+    }
+
+  }
+
   saveTask(id){
-    console.log(this.state[id].name);
-    console.log(this.props.tasks[id].name);
-    if(
-       this.state[id].name.length > 0
-      ){
-        console.log("shoudl be updating")
+    if(this.state[id].name.length > 0){
+        // console.log("should be updating")
         this.props.thunkUpdateTask(this.state[id]);
     }
   }
@@ -75,13 +86,14 @@ class ProjectTasks extends React.Component{
                 </li>
               )
             }
-            {/* <li>
-              <input type="text" 
-                     value={this.state.newTaskText}
-                     onChange={()=>{}}
-               />
-              <input type="submit" />
-            </li> */}
+            <li>
+              <h5>Create a new task:</h5>
+              <input type="text"
+                     value={this.state.newTaskName}
+                     onChange={this.changeNewTask()}
+              />
+              <input type="submit" onClick={this.addTask()}/>
+            </li>
           </ul>
       </div>
     )

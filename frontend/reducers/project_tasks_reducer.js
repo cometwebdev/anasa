@@ -13,7 +13,8 @@ import {
 const projectTaskReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
-  // debugger
+  //console.log(action.type);
+
   switch(action.type){
     case RECEIVE_PROJECT:
       //intentional fallthrough -- same functionality as RECEIVE_PROJECTS
@@ -28,7 +29,7 @@ const projectTaskReducer = (oldState = {}, action) => {
       newState[action.task.id] = action.task;
       return newState;
     case REMOVE_PROJECT_TASK:
-      delete newState[action.taskId];
+      delete newState[action.task.id];
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

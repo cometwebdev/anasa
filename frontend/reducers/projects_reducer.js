@@ -3,6 +3,10 @@ import {
   RECEIVE_PROJECT
 } from "../actions/project_actions";
 
+import {
+  REMOVE_PROJECT_TASK
+} from '../actions/project_task_actions';
+
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_TEAM } from '../actions/team_actions';
 const projectReducer = (oldState = {}, action) => {
@@ -19,8 +23,14 @@ const projectReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_PROJECT:
       let project = action.project;
-      project.taskIds = action.tasks ? Object.keys(action.tasks) : [];
+      project.taskIds = new Set
+      if (action.tasks) Object.keys(action.tasks).forEach(id => project.taskIds.add(parseInt(id)))
       newState[action.project.id] = action.project;
+      return newState;
+    case REMOVE_PROJECT_TASK:
+      const prj_id = action.task.prj_id;
+      const task_id = action.task.id;
+      newState[prj_id].taskIds.delete(task_id);
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

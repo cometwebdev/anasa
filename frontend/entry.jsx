@@ -6,6 +6,7 @@ import Root from './components/root';
 import { signup, login, logout } from './actions/session_actions';
 import { getTeams, getTeam, createTeam, updateTeam, receiveTeams } from './actions/team_actions';
 import { getProject, getProjects, createProject, updateProject } from './actions/project_actions';
+import { receiveProjectTask, removeProjectTask } from './actions/project_task_actions';
 
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
@@ -37,6 +38,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.getProject = getProject;
   window.createProject = createProject;
   window.updateProject = updateProject;
+
+  window.receiveProjectTask = receiveProjectTask;
+  window.removeProjectTask = removeProjectTask;
   
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);

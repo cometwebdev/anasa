@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     thunkUpdateTask: task => dispatch(updateProjectTask(task)),
     thunkCreateTask: task => dispatch(createProjectTask(task)),
-    thunkDeleteTask: taskId => dispatch(deleteProjectTask(taskId)),
+    thunkDeleteTask: task => dispatch(deleteProjectTask(task)),
   };
 };
 

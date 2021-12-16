@@ -15,15 +15,15 @@ export const receiveProjectTasks = tasks => {
 export const receiveProjectTask = task => {
 
   return {
-    type: RECEIVE_TASK,
+    type: RECEIVE_PROJECT_TASK,
     task
   }
 };
 
-export const removeProjectTask = taskId => {
+export const removeProjectTask = task => {
   return {
     type: REMOVE_PROJECT_TASK,
-    taskId
+    task
   }
 }
 
@@ -41,18 +41,16 @@ export const removeProjectTask = taskId => {
 
 export const createProjectTask = (task) => dispatch => {
 
-  return APIUtil.createProjectTask(task)
+  APIUtil.createProjectTask(task)
         .then(() => dispatch(receiveProjectTask(task)));
 };
 
 export const updateProjectTask = (task) => dispatch => {
-
-  return APIUtil.updateProjectTask(task)
+  APIUtil.updateProjectTask(task)
         .then(() => dispatch(receiveProjectTask(task)));
 };
 
-export const deleteProjectTask = taskId => dispatch => {
-
-  return APIUtil.deleteProjectTask(taskId)
-         .then(() => dispatch(removeProjectTask(taskId)));
+export const deleteProjectTask = task => dispatch => {
+  APIUtil.deleteProjectTask(task)
+         .then(() => dispatch(removeProjectTask(task)));
 }
