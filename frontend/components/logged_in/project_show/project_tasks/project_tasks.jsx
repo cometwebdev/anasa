@@ -8,8 +8,9 @@ class ProjectTasks extends React.Component{
     // tasks -> id is key, value is text 
     this.state = {
       newTaskName: "",
+      tasks: {}
     };
-    Object.assign(this.state, this.props.tasks);
+    Object.assign(this.state.tasks, this.props.tasks);
     //debugger
     this.saveTask = this.saveTask.bind(this);
   }
@@ -19,7 +20,14 @@ class ProjectTasks extends React.Component{
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(this.props.tasks !== prevProps.tasks) this.setState(this.props.tasks);
+    if(this.props.tasks !== prevProps.tasks) {
+      debugger
+      this.state.tasks = {};
+      this.setState({
+        newTaskName: "",
+        tasks: this.props.tasks 
+      });
+    }
   }
 
   addTask(){
@@ -39,15 +47,17 @@ class ProjectTasks extends React.Component{
     return () =>{
       // when I delete a task, do I need to change projectIds in the projects reducer
       // for the corresponding project?
-      this.props.thunkDeleteTask(this.state[id]);
+      this.props.thunkDeleteTask(this.state.tasks[id]);
     }
   }
 
   changeTask(id){
     return (e) => {
-      const newTask = this.state[id];
+      const newTask = this.state.tasks[id];
       newTask.name = e.currentTarget.value;
-      this.setState({[id]: newTask}, ()=>{this.saveTask(id)});
+      const newState = {};
+      Object.assign(newState, this.state)
+      this.setState(newState, ()=>{this.saveTask(id)});
       // this.saveTask(this.state[id])
     }
   }
@@ -62,9 +72,8 @@ class ProjectTasks extends React.Component{
   }
 
   saveTask(id){
-    if(this.state[id].name.length > 0){
-        // console.log("should be updating")
-        this.props.thunkUpdateTask(this.state[id]);
+    if(this.state.tasks[id].name.length > 0){
+        this.props.thunkUpdateTask(this.state.tasks[id]);
     }
   }
  
@@ -76,7 +85,7 @@ class ProjectTasks extends React.Component{
               Object.values(this.props.tasks).map(task => 
                 <li key={task.id}>
                   <input type="text" 
-                         value={this.state[task.id] ? this.state[task.id].name : ""}
+                         value={this.state.tasks[task.id] ? this.state.tasks[task.id].name : ""}
                          onChange={this.changeTask(task.id)}
                          
                   />

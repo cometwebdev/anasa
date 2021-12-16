@@ -21,6 +21,8 @@ const mapStateToProps = (state, ownProps) => {
   const prj = state.entities.projects[prjId];
   const name = prj ? prj.name : undefined;
   
+  console.log("hit project show mstp")
+  debugger
   
   return {
     id: prjId,

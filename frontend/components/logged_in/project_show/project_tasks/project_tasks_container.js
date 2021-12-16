@@ -14,10 +14,9 @@ import ProjectTasks from './project_tasks';
 const mapStateToProps = (state, ownProps) => {
   const prj = state.entities.projects[ownProps.id];
   const taskIds = prj ? prj.taskIds : [];
-  // const tasks = {};
-  // debugger
-  // taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks.ProjectTasks[taskId]);
-  const tasks = state.entities.tasks.projectTasks || {1: {id: 1, name: "Fake Task"} };
+  const tasks = {};
+  taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks.projectTasks[taskId]);
+
   return {
     tasks
   };

@@ -41,16 +41,31 @@ export const removeProjectTask = task => {
 
 export const createProjectTask = (task) => dispatch => {
 
-  APIUtil.createProjectTask(task)
-        .then(() => dispatch(receiveProjectTask(task)));
+  return APIUtil.createProjectTask(task)
+        .then(() => {
+            console.log("create")
+            debugger;
+            console.log("create2")
+            dispatch(receiveProjectTask(task));
+          }
+        );
 };
 
 export const updateProjectTask = (task) => dispatch => {
-  APIUtil.updateProjectTask(task)
-        .then(() => dispatch(receiveProjectTask(task)));
+  return APIUtil.updateProjectTask(task)
+        .then(() => {
+          console.log("update")
+            debugger;
+            console.log("update2")
+          dispatch(receiveProjectTask(task))
+        })
+        .fail((res) => {
+          debugger
+          console.log("update failed");
+        })
 };
 
 export const deleteProjectTask = task => dispatch => {
-  APIUtil.deleteProjectTask(task)
+  return APIUtil.deleteProjectTask(task)
          .then(() => dispatch(removeProjectTask(task)));
 }
