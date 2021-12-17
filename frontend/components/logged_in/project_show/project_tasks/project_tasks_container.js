@@ -13,10 +13,12 @@ import ProjectTasks from './project_tasks';
 
 const mapStateToProps = (state, ownProps) => {
   const prj = state.entities.projects[ownProps.id];
-  const taskIds = prj ? prj.taskIds : [];
+  const taskIds = prj && prj.taskIds ? prj.taskIds : [];
   const tasks = {};
-  taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks.projectTasks[taskId]);
-
+  // taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks.projectTasks[taskId]);
+  taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks[taskId]);
+  debugger
+  console.log("Hello????")
   return {
     tasks
   };

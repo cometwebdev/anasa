@@ -14,7 +14,6 @@ class ProjectEditForm extends React.Component {
   componentDidMount(){
     this.props.thunkGetProject().then(
       (res) => { 
-        // debugger
         this.setState({
           name: res.project.name,
           team_id: res.project.team_id
@@ -56,7 +55,6 @@ class ProjectEditForm extends React.Component {
   // }
 
   render(){
-    // debugger
     return (
       <div className="home-main">
         {this.props.sidebar}

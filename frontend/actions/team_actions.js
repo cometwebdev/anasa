@@ -14,7 +14,6 @@ export const RECEIVE_TEAM = "RECEIVE_TEAM";
 
 // new receiveTeams (in progress)
 export const receiveTeams = ({ teams, teammates }) => {
-  // debugger
   return {
     type: RECEIVE_TEAMS,
     teams,
@@ -59,7 +58,7 @@ export const createTeam = (team) => dispatch => {
 };
 
 export const updateTeam = (team) => dispatch => {
-  //debugger
+  
   return APIUtil.updateTeam(team)
         .then(receivedTeam => dispatch(receiveTeam(receivedTeam)));
 };

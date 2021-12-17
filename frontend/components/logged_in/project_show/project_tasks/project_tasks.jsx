@@ -11,7 +11,6 @@ class ProjectTasks extends React.Component{
       tasks: {}
     };
     Object.assign(this.state.tasks, this.props.tasks);
-    //debugger
     this.saveTask = this.saveTask.bind(this);
   }
 
@@ -21,7 +20,6 @@ class ProjectTasks extends React.Component{
 
   componentDidUpdate(prevProps, prevState){
     if(this.props.tasks !== prevProps.tasks) {
-      debugger
       this.state.tasks = {};
       this.setState({
         newTaskName: "",

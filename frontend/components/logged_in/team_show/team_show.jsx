@@ -48,11 +48,9 @@ class TeamShow extends React.Component{
   }
 
   saveDescription(){
-    //debugger
     if (this.state.name !== "Loading Team Name..." &&
         this.state.description !== this.props.description &&
         this.state.description !== ""){
-      //debugger
       this.props.thunkUpdateTeam(
         {
           id: this.props.id,

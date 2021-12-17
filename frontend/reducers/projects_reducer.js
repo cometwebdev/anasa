@@ -4,6 +4,7 @@ import {
 } from "../actions/project_actions";
 
 import {
+  RECEIVE_PROJECT_TASK,
   REMOVE_PROJECT_TASK
 } from '../actions/project_task_actions';
 
@@ -26,6 +27,9 @@ const projectReducer = (oldState = {}, action) => {
       project.taskIds = new Set
       if (action.tasks) Object.keys(action.tasks).forEach(id => project.taskIds.add(parseInt(id)))
       newState[action.project.id] = action.project;
+      return newState;
+    case RECEIVE_PROJECT_TASK:
+      newState[action.task.prj_id].taskIds.add(action.task.id);
       return newState;
     case REMOVE_PROJECT_TASK:
       const prj_id = action.task.prj_id;

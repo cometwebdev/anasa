@@ -10,7 +10,7 @@ export const createProjectTask = (task)  => {
   return $.ajax({
     method: 'POST',
     url: `/api/tasks`,
-    dataType: "text",
+    // dataType: "text",
     data: { task: sentTask }
   });
 };

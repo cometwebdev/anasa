@@ -15,7 +15,6 @@ class ProjectCreationForm extends React.Component {
   componentDidMount(){
     this.props.thunkGetTeams().then(
       (res) => { 
-        // debugger
         this.teams = Object.values(res.teams);
         this.setState({
           team_id: Object.keys(res.teams)[0]
@@ -57,7 +56,6 @@ class ProjectCreationForm extends React.Component {
   // }
 
   render(){
-    // debugger
     return (
       <div className="home-main">
         {this.props.sidebar}

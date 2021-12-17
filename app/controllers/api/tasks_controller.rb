@@ -4,7 +4,7 @@ class Api::TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      render json: "Task created successfully"
+      render "/api/tasks/show"
     else
       render @task.errors.full_messages, status: 422
     end

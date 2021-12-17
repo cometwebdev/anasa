@@ -35,6 +35,10 @@ class User < ApplicationRecord
   # tasks -- tasks either assigned to user or on a team or personal task
   # assigned tasks -- tasks assigned specifically to user?
 
+  has_many :tasks,
+    primary_key: :id,
+    foreign_key: :assignee_id,
+    class_name: :Task
   
   #GAASPIRE
   def generate_unique_session_token
