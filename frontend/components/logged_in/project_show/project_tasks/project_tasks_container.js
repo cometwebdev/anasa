@@ -17,8 +17,6 @@ const mapStateToProps = (state, ownProps) => {
   const tasks = {};
   // taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks.projectTasks[taskId]);
   taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks[taskId]);
-  debugger
-  console.log("Hello????")
   return {
     tasks
   };

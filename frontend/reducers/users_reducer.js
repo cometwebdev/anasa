@@ -2,8 +2,15 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 import { RECEIVE_TEAMS, RECEIVE_TEAM  } from '../actions/team_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 
+import {
+  RECEIVE_USER_TASK,
+  RECEIVE_USER_TASKS,
+  REMOVE_USER_TASK
+} from "../actions/user_task_actions";
+
 const usersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
+  const newState = Object.assign({}, oldState);
   switch(action.type){
     case RECEIVE_CURRENT_USER:
       const currentUser = { [action.currentUser.id]: action.currentUser }
@@ -13,8 +20,16 @@ const usersReducer = (oldState = {}, action) => {
     case RECEIVE_TEAMS:
       return Object.assign({}, oldState, action.teammates);
     case RECEIVE_USER:
-      const newState = Object.assign({}, oldState);
       newState[action.user.id] = action.user;
+      newState[action.user.id].tasksIds = new Set(Object.keys(action.tasks));
+      return newState;
+    case RECEIVE_USER_TASKS:
+      return newState;
+    case RECEIVE_USER_TASK:
+      newState[action.task.user_id].taskIds.add(action.task.id);
+      return newState;
+    case REMOVE_USER_TASK:
+      newState[action.task.user_id].taskIds.delete(action.task.id);
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};
