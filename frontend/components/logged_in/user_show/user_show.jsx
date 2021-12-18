@@ -66,6 +66,7 @@ class UserShow extends React.Component{
                       value={this.state.aboutMe}
             />
         </div>
+        {this.props.tasks}
       </div>
     </div>
     <Link to={`\\users\\${1}`}>Go to your profile</ Link>
