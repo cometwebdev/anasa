@@ -11,6 +11,7 @@ import { receiveProjectTask, removeProjectTask } from './actions/project_task_ac
 document.addEventListener("DOMContentLoaded", ()=>{
   let store;
   if(window.currentUser){
+    window.currentUser = window.currentUser.user;
     const preloadedState = {
       session: { id: window.currentUser.id },
       entities: {

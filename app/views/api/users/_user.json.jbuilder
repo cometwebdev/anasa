@@ -1,4 +1,4 @@
-json.extract! user, :id, :email, :about_me
+json.user user, :id, :email, :about_me
 
 json.set! "tasks" do 
   user.tasks.each do |task|

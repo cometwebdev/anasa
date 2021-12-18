@@ -27,6 +27,10 @@ import {
     REMOVE_USER_TASK
 } from "../actions/user_task_actions";
 
+import {
+  RECEIVE_USER
+} from "../actions/user_actions";
+
 
 const tasksReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -50,6 +54,11 @@ const tasksReducer = (oldState = {}, action) => {
     case REMOVE_PROJECT_TASK:
     case REMOVE_USER_TASK:
       delete newState[action.task.id];
+      return newState;
+    case RECEIVE_USER:
+      for (taskId in action.tasks){
+        newState[taskId] = Object.assign(newState[taskId] || {}, action.tasks[taskId]);
+      }
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

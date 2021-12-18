@@ -38,6 +38,19 @@ class UserShow extends React.Component{
     );
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(this.props.user.id !== prevProps.user.id){
+      this.props.thunkGetUser().then(
+        payload => {
+          this.setState({ 
+            aboutMe: payload.user.about_me, 
+            email: payload.user.email
+          });
+        }
+      );
+    }
+  }
+
   render(){
     return (
     <div className="home-main">
