@@ -120,4 +120,13 @@ User.all.each do |user|
       }
     )
   end
+
+  Task.create(
+    {
+      assignee_id: user.id,
+      name: tasks.sample,
+      taskable_type: "User",
+      taskable_id: user.id
+    }
+  )
 end
