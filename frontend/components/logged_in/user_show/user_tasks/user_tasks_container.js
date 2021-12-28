@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-  updateUserTask,
-  createUserTask,
-  deleteUserTask
-} from '../../../../actions/user_task_actions';
+  updateProjectTask,
+  createProjectTask,
+  deleteProjectTask
+} from '../../../../actions/project_task_actions';
 
 import {
   updateUserTask,
@@ -17,7 +17,8 @@ import {
 import UserTasks from './user_tasks';
 
 const mapStateToProps = (state, ownProps) => {
-  const user = state.entities.user[ownProps.id];
+  debugger
+  const user = state.entities.users[ownProps.id];
   const taskIds = user && user.taskIds ? user.taskIds : [];
   const tasks = {};
   taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks[taskId]);

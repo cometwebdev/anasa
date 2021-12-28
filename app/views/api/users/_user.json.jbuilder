@@ -12,3 +12,11 @@ json.set! "tasks" do
     end
   end
 end
+
+json.set! "projects" do 
+  user.projects.each do |prj|
+    json.set! prj.id do
+      json.name prj.name
+    end
+  end
+end

@@ -8,12 +8,17 @@ import {
   REMOVE_PROJECT_TASK
 } from '../actions/project_task_actions';
 
-import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
+// Honestly not sure if receive user is ever being dispatched or whether its always just receive current user
+
+import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_TEAM } from '../actions/team_actions';
 const projectReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
   switch(action.type){
+    case RECEIVE_USER:
+    case RECEIVE_CURRENT_USER:
     case RECEIVE_TEAM:
       //intentional fallthrough -- same functionality as RECEIVE_PROJECTS
     case RECEIVE_PROJECTS:

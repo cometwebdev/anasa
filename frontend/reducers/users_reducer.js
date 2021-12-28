@@ -24,6 +24,7 @@ const usersReducer = (oldState = {}, action) => {
     case RECEIVE_USER:
       newState[action.user.id] = action.user;
       newState[action.user.id].tasksIds = new Set(Object.keys(action.tasks));
+      newState[action.user.id].prjIds = new Set(Object.keys(action.projects));
       return newState;
     case RECEIVE_USER_TASKS:
       return newState;
