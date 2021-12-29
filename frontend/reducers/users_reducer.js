@@ -19,7 +19,7 @@ const usersReducer = (oldState = {}, action) => {
   const newState = Object.assign({}, oldState);
   switch(action.type){
     case RECEIVE_CURRENT_USER:
-      const currentUser = { [action.currentUser.id]: action.currentUser }
+      const currentUser = { [action.currentUser.user.id]: action.currentUser.user }
       return Object.assign({}, oldState, currentUser);
     case RECEIVE_TEAM:
     case RECEIVE_TEAMS:
@@ -41,6 +41,8 @@ const usersReducer = (oldState = {}, action) => {
       newState[action.task.assignee_id].taskIds.add(action.task.id);
       return newState;
     case REMOVE_PROJECT_TASK:
+      if(action.task.assignee_id) newState[action.task.assignee_id].taskIds.delete(action.task.id);
+      return newState;
     case REMOVE_USER_TASK:
       newState[action.task.assignee_id].taskIds.delete(action.task.id);
       return newState;
