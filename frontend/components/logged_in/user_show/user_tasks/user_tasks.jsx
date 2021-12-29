@@ -64,7 +64,12 @@ class UserTasks extends React.Component{
 
   deleteTask(id){
     return () =>{
-      this.props.thunkDeleteTask(this.state.tasks[id]);
+      let task = this.state.tasks[id];
+      if(task.user_id){
+        this.props.thunkUserDeleteTask(this.state.tasks[id]);
+      } else {
+        this.props.thunkProjectDeleteTask(this.state.tasks[id]);
+      }
     }
   }
 
@@ -89,13 +94,17 @@ class UserTasks extends React.Component{
   // }
 
   saveTask(id){
-    if(this.state.tasks[id].name.length > 0){
-        this.props.thunkUpdateTask(this.state.tasks[id]);
+    let task = this.state.tasks[id];
+    if(task.name.length > 0){
+        if(task.user_id){
+          this.props.thunkUserUpdateTask(this.state.tasks[id]);
+        } else {
+          this.props.thunkProjectUpdateTask(this.state.tasks[id]);
+        }
     }
   }
  
   render(){
-    
     return(
       <div>
         <ul>
