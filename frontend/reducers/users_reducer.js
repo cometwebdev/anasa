@@ -8,6 +8,12 @@ import {
   REMOVE_USER_TASK
 } from "../actions/user_task_actions";
 
+import {
+  RECEIVE_PROJECT_TASK,
+  RECEIVE_PROJECT_TASKS,
+  REMOVE_PROJECT_TASK
+} from "../actions/project_task_actions";
+
 const usersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   const newState = Object.assign({}, oldState);
@@ -23,16 +29,20 @@ const usersReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_USER:
       newState[action.user.id] = action.user;
-      newState[action.user.id].tasksIds = new Set(Object.keys(action.tasks));
+      newState[action.user.id].taskIds = new Set(Object.keys(action.tasks));
       newState[action.user.id].prjIds = new Set(Object.keys(action.projects));
       return newState;
+    case RECEIVE_PROJECT_TASKS:
     case RECEIVE_USER_TASKS:
       return newState;
+    case RECEIVE_PROJECT_TASK:
     case RECEIVE_USER_TASK:
-      newState[action.task.user_id].taskIds.add(action.task.id);
+      
+      newState[action.task.assignee_id].taskIds.add(action.task.id);
       return newState;
+    case REMOVE_PROJECT_TASK:
     case REMOVE_USER_TASK:
-      newState[action.task.user_id].taskIds.delete(action.task.id);
+      newState[action.task.assignee_id].taskIds.delete(action.task.id);
       return newState;
     case LOGOUT_CURRENT_USER:
       return {};

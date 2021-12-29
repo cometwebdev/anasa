@@ -16,7 +16,7 @@ end
 json.set! "projects" do 
   user.projects.each do |prj|
     json.set! prj.id do
-      json.name prj.name
+      json.extract! prj, :id, :name
     end
   end
 end

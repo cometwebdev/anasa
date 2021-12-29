@@ -8,6 +8,7 @@ class UserTasks extends React.Component{
     // tasks -> id is key, value is text 
     this.state = {
       newTaskName: "",
+      prj_id: null,
       tasks: {}
     };
     Object.assign(this.state.tasks, this.props.tasks);
@@ -23,17 +24,38 @@ class UserTasks extends React.Component{
       this.state.tasks = {};
       this.setState({
         newTaskName: "",
+        prj_id: null,
         tasks: this.props.tasks 
       });
     }
   }
 
+  update(field) {
+    return e => {
+      this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+  }
+
   addTask(){
     return () => {
-      this.props.thunkCreateTask({
+      let handleCreate, type, id;
+      if (this.state.prj_id === null){
+        handleCreate = this.props.thunkUserCreateTask;
+        type = "User";
+        id = this.props.id;
+      } else {
+        handleCreate = this.props.thunkProjectCreateTask;
+        type = "Project";
+        id = this.state.prj_id;
+      }
+     
+      handleCreate({
         name: this.state.newTaskName,
-        taskable_type: "project",
-        taskable_id: this.props.id
+        taskable_type: type,
+        taskable_id: id,
+        assignee_id: this.props.id,
       }).then(
         () => { this.setState({"newTaskName": ""})}
       );
@@ -41,10 +63,7 @@ class UserTasks extends React.Component{
   }
 
   deleteTask(id){
-    //console.log("hello")
     return () =>{
-      // when I delete a task, do I need to change projectIds in the projects reducer
-      // for the corresponding project?
       this.props.thunkDeleteTask(this.state.tasks[id]);
     }
   }
@@ -60,14 +79,14 @@ class UserTasks extends React.Component{
     }
   }
 
-  changeNewTask(){
-    //later on can do more fancy things like + symbol to create new task on frontend side
-    //and then treat new task like any other, but for now just have form
-    return (e) => {
-      this.setState({"newTaskName": e.currentTarget.value});
-    }
+  // changeNewTask(){
+  //   //later on can do more fancy things like + symbol to create new task on frontend side
+  //   //and then treat new task like any other, but for now just have form
+  //   return (e) => {
+  //     this.setState({"newTaskName": e.currentTarget.value});
+  //   }
 
-  }
+  // }
 
   saveTask(id){
     if(this.state.tasks[id].name.length > 0){
@@ -76,6 +95,7 @@ class UserTasks extends React.Component{
   }
  
   render(){
+    
     return(
       <div>
         <ul>
@@ -93,12 +113,20 @@ class UserTasks extends React.Component{
                 </li>
               )
             }
-            <li>
+            <li key={0}>
               <h5>Create a new task:</h5>
               <input type="text"
                      value={this.state.newTaskName}
-                     onChange={this.changeNewTask()}
+                     onChange={this.update("newTaskName")}
               />
+              <select onChange={this.update('prj_id')}
+                        className="auth-input-field"
+                >
+                  <option value={null} key={null}>Personal Task</option>
+                  {
+                    this.props.prjs.map(prj => <option value={prj.id} key={prj.id}>{prj.name}</option>)
+                  }
+              </ select>
               <input type="submit" onClick={this.addTask()}/>
             </li>
           </ul>

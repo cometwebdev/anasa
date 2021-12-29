@@ -1,8 +1,8 @@
 import * as APIUtil from '../util/user_task_api_util';
 
-export const RECEIVE_USER_TASK = "RECEIVE_TASK";
-export const RECEIVE_USER_TASKS = "RECEIVE_TASKS";
-export const REMOVE_USER_TASK = "REMOVE_TASK";
+export const RECEIVE_USER_TASK = "RECEIVE_USER_TASK";
+export const RECEIVE_USER_TASKS = "RECEIVE_USER_TASKS";
+export const REMOVE_USER_TASK = "REMOVE_USER_TASK";
 
 export const receiveUserTasks = tasks => {
   

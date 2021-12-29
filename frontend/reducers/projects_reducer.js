@@ -25,11 +25,12 @@ const projectReducer = (oldState = {}, action) => {
       let projectId;
       for (projectId in action.projects){
         newState[projectId] = Object.assign(newState[projectId] || {}, action.projects[projectId]);
+        newState[projectId].taskIds = new Set();
       }
       return newState;
     case RECEIVE_PROJECT:
       let project = action.project;
-      project.taskIds = new Set
+      project.taskIds = new Set();
       if (action.tasks) Object.keys(action.tasks).forEach(id => project.taskIds.add(parseInt(id)))
       newState[action.project.id] = action.project;
       return newState;

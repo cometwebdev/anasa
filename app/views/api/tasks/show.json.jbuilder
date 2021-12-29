@@ -1,4 +1,4 @@
-json.extract! @task, :id, :name
+json.extract! @task, :id, :name, :assignee_id
 
 if @task.taskable_type == 'Project'
   json.prj_id @task.taskable_id
