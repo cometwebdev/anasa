@@ -20,10 +20,10 @@ export const receiveUserTask = task => {
   }
 };
 
-export const removeUserTask = taskId => {
+export const removeUserTask = task => {
   return {
     type: REMOVE_USER_TASK,
-    taskId
+    task
   }
 }
 
@@ -42,17 +42,17 @@ export const removeUserTask = taskId => {
 export const createUserTask = (task) => dispatch => {
 
   return APIUtil.createUserTask(task)
-        .then(() => dispatch(receiveUserTask(task)));
+        .then((receivedTask) => dispatch(receiveUserTask(receivedTask)));
 };
 
 export const updateUserTask = (task) => dispatch => {
 
   return APIUtil.updateUserTask(task)
-        .then(() => dispatch(receiveUserTask(task)));
+        .then((receivedTask) => dispatch(receiveUserTask(receivedTask)));
 };
 
-export const deleteUserTask = taskId => dispatch => {
+export const deleteUserTask = task => dispatch => {
 
-  return APIUtil.deleteUserTask(taskId)
-         .then(() => dispatch(removeUserTask(taskId)));
+  return APIUtil.deleteUserTask(task)
+         .then((receivedTask) => dispatch(removeUserTask(receivedTask)));
 }

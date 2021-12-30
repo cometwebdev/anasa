@@ -24,7 +24,9 @@ const mapStateToProps = (state, ownProps) => {
   const prjs = [];
   prjIds.forEach(id => prjs.push(state.entities.projects[id]));
   const tasks = {};
-  taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks[taskId]);
+  taskIds.forEach(taskId => {
+    if(state.entities.tasks[taskId]) {tasks[taskId] = state.entities.tasks[taskId]}
+  });
   
   return {
     tasks,

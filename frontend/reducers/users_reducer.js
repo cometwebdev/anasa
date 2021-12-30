@@ -19,8 +19,10 @@ const usersReducer = (oldState = {}, action) => {
   const newState = Object.assign({}, oldState);
   switch(action.type){
     case RECEIVE_CURRENT_USER:
-      const currentUser = { [action.currentUser.user.id]: action.currentUser.user }
-      return Object.assign({}, oldState, currentUser);
+      newState[action.currentUser.user.id] = action.currentUser.user;
+      newState[action.user.id].taskIds = new Set(Object.keys(action.tasks || {}));
+      newState[action.user.id].prjIds = new Set(Object.keys(action.projects || {}));
+      return newState;
     case RECEIVE_TEAM:
     case RECEIVE_TEAMS:
       for(let teammateId in action.teammates){
@@ -29,8 +31,8 @@ const usersReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_USER:
       newState[action.user.id] = action.user;
-      newState[action.user.id].taskIds = new Set(Object.keys(action.tasks));
-      newState[action.user.id].prjIds = new Set(Object.keys(action.projects));
+      newState[action.user.id].taskIds = new Set(Object.keys(action.tasks || {}));
+      newState[action.user.id].prjIds = new Set(Object.keys(action.projects || {}));
       return newState;
     case RECEIVE_PROJECT_TASKS:
     case RECEIVE_USER_TASKS:

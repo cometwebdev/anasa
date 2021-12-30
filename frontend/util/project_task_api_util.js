@@ -22,7 +22,7 @@ export const updateProjectTask = (task)  => {
   return $.ajax({
     method: 'PATCH',
     url: `/api/tasks/${task.id}`,
-    dataType: "text",
+    //dataType: "text",
     data: { task: sentTask }
   });
 };
@@ -33,7 +33,7 @@ export const deleteProjectTask = (task) => {
   
   return $.ajax({
     method: 'DELETE',
-    dataType: "text",
+    //dataType: "text",
     url: `/api/tasks/${task.id}`,
     data: { task: sentTask }
   });

@@ -2,7 +2,9 @@ class Api::TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-
+    if @task.taskable_type == "User" && @task.assignee_id.nil?
+      @task.assignee_id = current_user.id
+    end
     if @task.save
       render "/api/tasks/show"
     else
@@ -16,7 +18,7 @@ class Api::TasksController < ApplicationController
     if @task.nil?
       render json: "No task found", status: 404
     elsif @task.update(task_params)
-      render json: "Task updated successfully"
+      render "/api/tasks/show"
     else
       render json: @task.errors.full_messages, status: 422
     end
@@ -30,7 +32,7 @@ class Api::TasksController < ApplicationController
       render json: "No task found", status: 404
     else
       @task.destroy
-      render json: "Task deleted successfully"
+      render "/api/tasks/show"
     end
   end
 

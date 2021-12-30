@@ -50,8 +50,8 @@ export const createProjectTask = (task) => dispatch => {
 
 export const updateProjectTask = (task) => dispatch => {
   return APIUtil.updateProjectTask(task)
-        .then(() => {
-          dispatch(receiveProjectTask(task))
+        .then((receivedTask) => {
+          dispatch(receiveProjectTask(receivedTask))
         })
         .fail((res) => {
           console.log("update failed");
@@ -60,5 +60,5 @@ export const updateProjectTask = (task) => dispatch => {
 
 export const deleteProjectTask = task => dispatch => {
   return APIUtil.deleteProjectTask(task)
-         .then(() => dispatch(removeProjectTask(task)));
+         .then((receivedTask) => dispatch(removeProjectTask(receivedTask)));
 }
