@@ -94,8 +94,8 @@ class TeamShow extends React.Component{
               <ul>
                 {
                   this.props.teammates.map(teammate => 
-                    <li className="link">
-                      <Link to={`/users/${teammate.id}`} key={teammate.id}>
+                    <li className="link" key={teammate.id} >
+                      <Link to={`/users/${teammate.id}`} >
                           <span>{teammate.email}</span>
                       </Link>
                     </li>

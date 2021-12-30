@@ -8,11 +8,12 @@ class UserTasks extends React.Component{
     // tasks -> id is key, value is text 
     this.state = {
       newTaskName: "",
-      prj_id: null,
+      prj_id: 0,
       tasks: {}
     };
     Object.assign(this.state.tasks, this.props.tasks);
     this.saveTask = this.saveTask.bind(this);
+    this.addTask = this.addTask.bind(this);
   }
 
   componentDidMount(){
@@ -24,7 +25,7 @@ class UserTasks extends React.Component{
       this.state.tasks = {};
       this.setState({
         newTaskName: "",
-        prj_id: null,
+        prj_id: 0,
         tasks: this.props.tasks 
       });
     }
@@ -39,9 +40,8 @@ class UserTasks extends React.Component{
   }
 
   addTask(){
-    return () => {
       let handleCreate, type, id;
-      if (this.state.prj_id === null){
+      if (this.state.prj_id === 0){
         handleCreate = this.props.thunkUserCreateTask;
         type = "User";
         id = this.props.id;
@@ -50,7 +50,7 @@ class UserTasks extends React.Component{
         type = "Project";
         id = this.state.prj_id;
       }
-     
+      let x = 0;
       handleCreate({
         name: this.state.newTaskName,
         taskable_type: type,
@@ -59,7 +59,6 @@ class UserTasks extends React.Component{
       }).then(
         () => { this.setState({"newTaskName": ""})}
       );
-    }
   }
 
   deleteTask(id){
@@ -131,12 +130,12 @@ class UserTasks extends React.Component{
               <select onChange={this.update('prj_id')}
                         className="auth-input-field"
                 >
-                  <option value={null} key={null}>Personal Task</option>
+                  <option value={null} key={0}>Personal Task</option>
                   {
                     this.props.prjs.map(prj => <option value={prj.id} key={prj.id}>{prj.name}</option>)
                   }
               </ select>
-              <input type="submit" onClick={this.addTask()}/>
+              <input type="submit" onClick={this.addTask}/>
             </li>
           </ul>
       </div>
