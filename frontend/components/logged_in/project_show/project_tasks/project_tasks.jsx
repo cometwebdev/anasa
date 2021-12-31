@@ -8,6 +8,7 @@ class ProjectTasks extends React.Component{
     // tasks -> id is key, value is text 
     this.state = {
       newTaskName: "",
+      assignee_id: 0,
       tasks: {}
     };
     Object.assign(this.state.tasks, this.props.tasks);
@@ -23,18 +24,33 @@ class ProjectTasks extends React.Component{
       this.state.tasks = {};
       this.setState({
         newTaskName: "",
+        assignee_id: 0,
         tasks: this.props.tasks 
       });
     }
   }
 
+  update(field) {
+    return e => {
+      this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+  }
+
   addTask(){
     return () => {
-      this.props.thunkCreateTask({
+
+      const task = {
         name: this.state.newTaskName,
         taskable_type: "project",
-        taskable_id: this.props.id
-      }).then(
+        taskable_id: this.props.id,
+      }
+      if(this.state.assignee_id !== 0){
+        task.assignee_id = this.state.assignee_id;
+      }
+
+      this.props.thunkCreateTask(task).then(
         () => { this.setState({"newTaskName": ""})}
       );
     }
@@ -97,11 +113,22 @@ class ProjectTasks extends React.Component{
               <h5>Create a new task:</h5>
               <input type="text"
                      value={this.state.newTaskName}
-                     onChange={this.changeNewTask()}
+                     onChange={this.update("newTaskName")}
               />
+
+              <select onChange={this.update("assignee_id")}
+                        className="auth-input-field"
+              >
+              <option value={0} key={0}>No Specified Assignee </option>
+                  {
+                    this.props.teammates.map(user => <option value={user.id} key={user.id}>{user.email}</option>)
+                  }
+              </ select>
+
               <input type="submit" onClick={this.addTask()}/>
             </li>
           </ul>
+          
       </div>
     )
   }

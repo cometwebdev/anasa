@@ -27,6 +27,8 @@ const usersReducer = (oldState = {}, action) => {
     case RECEIVE_TEAMS:
       for(let teammateId in action.teammates){
         newState[teammateId] = Object.assign(newState[teammateId] || {}, action.teammates[teammateId]);
+        newState[teammateId].taskIds = new Set();
+        newState[teammateId].prjIds = new Set();
       }
       return newState;
     case RECEIVE_USER:

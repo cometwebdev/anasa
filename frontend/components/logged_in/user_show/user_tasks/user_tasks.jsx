@@ -130,7 +130,7 @@ class UserTasks extends React.Component{
               <select onChange={this.update('prj_id')}
                         className="auth-input-field"
                 >
-                  <option value={null} key={0}>Personal Task</option>
+                  <option value={0} key={0}>Personal Task</option>
                   {
                     this.props.prjs.map(prj => <option value={prj.id} key={prj.id}>{prj.name}</option>)
                   }
