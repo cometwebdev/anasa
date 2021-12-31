@@ -18,11 +18,13 @@ const mapStateToProps = (state, ownProps) => {
 
   const userId = ownProps.match.params.userId;
   const user = state.entities.users[userId];
+
   const name = user ? `${user.email}'s Page` : "User Profile Page";
-  return { user: state.entities,
+  const tasks = user ? <UserTaskContainer id={user.id} /> : null;
+  return { user,
            header: <HomeHeaderContainer title="User Profile Page" />,
            sidebar: <SidebarContainer />,
-           tasks: <UserTaskContainer id={user.id} />,
+           tasks,
            name
    };
 }

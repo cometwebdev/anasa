@@ -39,7 +39,7 @@ class UserShow extends React.Component{
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(this.props.user.id !== prevProps.user.id){
+    if(this.props.user && this.props.user.id !== prevProps.user.id){
       this.props.thunkGetUser().then(
         payload => {
           this.setState({ 
@@ -52,6 +52,17 @@ class UserShow extends React.Component{
   }
 
   render(){
+    if(!this.props.user) return (
+      <div className="home-main">
+      {this.props.sidebar}
+        <div>
+          {this.props.header}
+          <div className="UserShow-main">
+            <div> No User Found </div>
+          </div>
+        </div>  
+      </div>
+    );
     return (
     <div className="home-main">
       {this.props.sidebar}
