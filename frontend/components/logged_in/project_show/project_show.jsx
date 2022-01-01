@@ -72,6 +72,17 @@ class ProjectShow extends React.Component{
 
 
   render(){
+    if(!this.props.prj) return (
+      <div className="home-main">
+      {this.props.sidebar}
+        <div>
+          {this.props.header}
+          <div className="ProjectShow-main">
+            <div> No Project Found </div>
+          </div>
+        </div>  
+      </div>
+    );
     return (
       <div className="home-main">
         {this.props.sidebar}

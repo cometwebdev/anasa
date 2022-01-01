@@ -27,7 +27,8 @@ const mapStateToProps = (state, ownProps) => {
     header: <HomeHeaderContainer title="Project Show Page" />,
     sidebar: <SidebarContainer />,
     name,
-    tasks: <ProjectTasksContainer id={prjId} />
+    tasks: <ProjectTasksContainer id={prjId} />,
+    prj
   };
 }
 

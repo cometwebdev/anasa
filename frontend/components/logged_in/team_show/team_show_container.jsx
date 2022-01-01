@@ -30,7 +30,8 @@ const mapStateToProps = (state, ownProps) => {
     name,
     teammates,
     projects,
-    description
+    description,
+    team
   };
 };
 

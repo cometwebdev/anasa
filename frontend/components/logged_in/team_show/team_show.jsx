@@ -73,6 +73,17 @@ class TeamShow extends React.Component{
   }
 
   render(){
+    if(!this.props.user) return (
+      <div className="home-main">
+      {this.props.sidebar}
+        <div>
+          {this.props.header}
+          <div className="TeamShow-main">
+            <div> No Team Found </div>
+          </div>
+        </div>  
+      </div>
+    );
     return (
       <div className="home-main">
         {this.props.sidebar}
