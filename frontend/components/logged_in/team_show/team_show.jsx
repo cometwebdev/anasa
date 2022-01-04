@@ -73,7 +73,7 @@ class TeamShow extends React.Component{
   }
 
   render(){
-    if(!this.props.user) return (
+    if(!this.props.team) return (
       <div className="home-main">
       {this.props.sidebar}
         <div>
