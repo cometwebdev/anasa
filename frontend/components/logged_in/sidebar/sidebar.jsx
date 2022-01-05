@@ -28,9 +28,7 @@ class Sidebar extends React.Component {
             </Link>
           ))}
         </div>
-        <div>
-          <TeamCreateShowContainer />
-        </div>
+        <TeamCreateShowContainer />
       </div>
     )
   }

@@ -5,16 +5,20 @@
   min-width: 0vw;
   max-width: 30vw;
   padding: 5px 20px;
-  .home-logo-container {
-    .home-logo {
-      background-size: 15px;
-      background-image: image-url('icon.png');
-      background-repeat: no-repeat;
-      background-position-y: 1.5px;
+  .home-sidebar-header{
+    margin: 20px auto;
+    .home-logo-container {
+      .home-logo {
+        background-size: 30px;
+        background-image: image-url('icon.png');
+        background-repeat: no-repeat;
+        background-position-y: 1.5px;
 
-      h5{
-        color: white;
-        padding-left: 18px;
+        h5{
+          color: white;
+          padding-left: 40px;
+          font-size: 30px;
+        }
       }
     }
   }
@@ -39,6 +43,9 @@
   }
   .create-team-container {
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
     h4 {
       color: white;
