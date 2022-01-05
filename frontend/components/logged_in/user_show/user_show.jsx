@@ -54,8 +54,8 @@ class UserShow extends React.Component{
   render(){
     if(!this.props.user) return (
       <div className="home-main">
-      {this.props.sidebar}
-        <div>
+        {this.props.sidebar}
+        <div className="page-main">
           {this.props.header}
           <div className="UserShow-main">
             <div> No User Found </div>
@@ -66,7 +66,7 @@ class UserShow extends React.Component{
     return (
     <div className="home-main">
       {this.props.sidebar}
-      <div>
+      <div className="page-main">
         {this.props.header}
         <div className="UserShow-main">
         <h3>
@@ -78,9 +78,9 @@ class UserShow extends React.Component{
             />
         </div>
         {this.props.tasks}
+      <Link to={`\\users\\${1}`}>Go to your profile</ Link>
       </div>
     </div>
-    <Link to={`\\users\\${1}`}>Go to your profile</ Link>
   </div>
 )
   }

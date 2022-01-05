@@ -75,8 +75,8 @@ class TeamShow extends React.Component{
   render(){
     if(!this.props.team) return (
       <div className="home-main">
-      {this.props.sidebar}
-        <div>
+        {this.props.sidebar}
+        <div className="page-main">
           {this.props.header}
           <div className="TeamShow-main">
             <div> No Team Found </div>
@@ -87,7 +87,7 @@ class TeamShow extends React.Component{
     return (
       <div className="home-main">
         {this.props.sidebar}
-        <div>
+        <div className="page-main">
           {this.props.header}
           <div className="TeamShow-main">
             <h3>

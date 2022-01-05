@@ -58,7 +58,7 @@ class ProjectEditForm extends React.Component {
     return (
       <div className="home-main">
         {this.props.sidebar}
-        <div>
+        <div className="page-main">
           {this.props.header}
           <div className="prj-edit-form-container">
             <form onSubmit={this.handleSubmit} 

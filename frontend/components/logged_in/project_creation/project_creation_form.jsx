@@ -59,7 +59,7 @@ class ProjectCreationForm extends React.Component {
     return (
       <div className="home-main">
         {this.props.sidebar}
-        <div>
+        <div className="page-main">
           {this.props.header}
           <div className="auth-form-container">
             <form onSubmit={this.handleSubmit} 

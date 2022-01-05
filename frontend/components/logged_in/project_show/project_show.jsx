@@ -74,8 +74,8 @@ class ProjectShow extends React.Component{
   render(){
     if(!this.props.prj) return (
       <div className="home-main">
-      {this.props.sidebar}
-        <div>
+        {this.props.sidebar}
+        <div className="page-main">
           {this.props.header}
           <div className="ProjectShow-main">
             <div> No Project Found </div>
@@ -86,7 +86,7 @@ class ProjectShow extends React.Component{
     return (
       <div className="home-main">
         {this.props.sidebar}
-        <div>
+        <div className="page-main">
           {this.props.header}
           <div className="ProjectShow-main">
           <h3>
