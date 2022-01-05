@@ -20,9 +20,16 @@ const mapStateToProps = (state, ownProps) => {
   // on teams controller
   const name = team ? team.name : "Loading Team Name...";
   const description = team ? team.description : undefined;
-  const teammates = team ? team.teammateIds.map(mateId => state.entities.users[mateId]) : [];
+  const teammates = []
+  if(team && team.teammateIds && team.teammateIds.length > 0){
+    team.teammateIds.forEach(mateId => {
+      let mate = state.entities.users[mateId];
+      if(mate && mate.id && mate.email) teammates.push(mate);
+    });
+  }
   // change these into links to project pages
-  const projects = team && team.projectIds ? team.projectIds.map(prjId => state.entities.projects[prjId]) : [];
+  const projects = team && team.projectIds ? team.projectIds.map(prjId => state.entities.projects[prjId] || {}) : [];
+  
   return {
     id: teamId,
     header: <HomeHeaderContainer title="Team Show Page" />,

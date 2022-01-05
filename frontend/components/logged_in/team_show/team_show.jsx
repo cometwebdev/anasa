@@ -119,8 +119,8 @@ class TeamShow extends React.Component{
               <ul>
                 {
                   this.props.projects.map(prj => 
-                    <li className="link">
-                      <Link to={`/projects/${prj.id}`} key={prj.id}>
+                    <li className="link" key={prj.id}>
+                      <Link to={`/projects/${prj.id}`} >
                         <span>{prj.name}</span>
                       </Link>
                     </li>
