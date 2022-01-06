@@ -35,6 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  if(ownProps.editable){
   return {
     thunkProjectUpdateTask: task => dispatch(updateProjectTask(task)),
     thunkProjectCreateTask: task => dispatch(createProjectTask(task)),
@@ -43,6 +44,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     thunkUserCreateTask: task => dispatch(createUserTask(task)),
     thunkUserDeleteTask: task => dispatch(deleteUserTask(task)),
   };
+} else {
+  return {
+    thunkProjectUpdateTask: () => null,
+    thunkProjectCreateTask: () => null,
+    thunkProjectDeleteTask: () => null,
+    thunkUserUpdateTask: () => null,
+    thunkUserCreateTask: () => null,
+    thunkUserDeleteTask: () => null,
+  };
+}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserTasks);
