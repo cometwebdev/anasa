@@ -24,6 +24,7 @@ const mapStateToProps = (state, ownProps) => {
   })
   // taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks.projectTasks[taskId]);
   taskIds.forEach(taskId => tasks[taskId] = state.entities.tasks[taskId]);
+  
   return {
     tasks,
     teammates
@@ -31,6 +32,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  // have to make sure currentUser can't edit project tasks they aren't a part of
+
   return {
     thunkUpdateTask: task => dispatch(updateProjectTask(task)),
     thunkCreateTask: task => dispatch(createProjectTask(task)),

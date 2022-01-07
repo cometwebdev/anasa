@@ -34,6 +34,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const projectId = ownProps.match.params.projectId;
+  // have to make sure currentUser can't edit projects they aren't a part of
+
   return {
     thunkGetProject: () => dispatch(getProject(projectId)),
     thunkUpdateProject: prj => dispatch(updateProject(prj)),

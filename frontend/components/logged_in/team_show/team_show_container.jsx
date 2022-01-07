@@ -44,6 +44,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const teamId = ownProps.match.params.teamId;
+  // have to make sure currentUser can't edit teams they aren't a part of
+
   return {
     thunkGetTeam: () => dispatch(getTeam(teamId)),
     thunkUpdateTeam: (team) => dispatch(updateTeam(team))
