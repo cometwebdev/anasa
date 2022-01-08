@@ -34,9 +34,9 @@ class UserTasks extends React.Component{
   update(field) {
     return e => {
       this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
+        [field]: e.currentTarget.value
+      });
+    }
   }
 
   addTask(){
@@ -50,7 +50,6 @@ class UserTasks extends React.Component{
         type = "Project";
         id = this.state.prj_id;
       }
-      let x = 0;
       handleCreate({
         name: this.state.newTaskName,
         taskable_type: type,
@@ -104,6 +103,8 @@ class UserTasks extends React.Component{
   }
  
   render(){
+    // conditionally add onclick in react
+    // https://stackoverflow.com/questions/48223852/how-to-conditionally-add-or-not-onclick-on-a-div-in-react
     return(
       <div>
         <ul>
@@ -112,7 +113,7 @@ class UserTasks extends React.Component{
                 <li key={task.id}>
                   <input type="text" 
                          value={this.state.tasks[task.id] ? this.state.tasks[task.id].name : ""}
-                         onChange={this.changeTask(task.id)}
+                         onChange={this.props.canEdit ? this.changeTask(task.id) : undefined}
                          
                   />
                   

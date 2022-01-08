@@ -25,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
            header: <HomeHeaderContainer title="User Profile Page" />,
            sidebar: <SidebarContainer />,
            tasks,
-           name
+           name,
+           canEdit
    };
 }
 
@@ -41,8 +42,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
   } else{
     return {
-      thunkGetUser: () => null,
-      thunkUpdateUser: () => null,
+      thunkGetUser: () => dispatch(getUser(userId))
     }
   }
 }

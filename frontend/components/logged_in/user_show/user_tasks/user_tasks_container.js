@@ -30,7 +30,8 @@ const mapStateToProps = (state, ownProps) => {
   
   return {
     tasks,
-    prjs
+    prjs,
+    canEdit: ownProps.editable
   };
 };
 

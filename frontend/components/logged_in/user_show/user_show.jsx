@@ -16,14 +16,19 @@ class UserShow extends React.Component{
   }
 
   changeAboutMe(){
-    return (e) => {
-      this.setState({ aboutMe: e.currentTarget.value });
-      // still having an error of leaving off the last character, 
-      // but debouncing should fix that, see below:
-      //
-      // https://davidwalsh.name/javascript-debounce-function
-      this.saveAboutMe(e.currentTarget.value);
-    };
+    if(this.props.canEdit){
+      return (e) => {
+        this.setState({ aboutMe: e.currentTarget.value });
+        // still having an error of leaving off the last character, 
+        // but debouncing should fix that, see below:
+        //
+        // https://davidwalsh.name/javascript-debounce-function
+        this.saveAboutMe(e.currentTarget.value);
+      };
+    }
+    else{
+      return () => null;
+    }
   }
 
   componentDidMount(){
