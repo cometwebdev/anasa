@@ -105,6 +105,24 @@ class UserTasks extends React.Component{
   render(){
     // conditionally add onclick in react
     // https://stackoverflow.com/questions/48223852/how-to-conditionally-add-or-not-onclick-on-a-div-in-react
+    
+    const addTaskEl = (!this.props.canEdit) ? null : (
+      <li key={0}>
+        <h5>Create a new task:</h5>
+        <input type="text"
+               value={this.state.newTaskName}
+               onChange={this.update("newTaskName")}
+        />
+        <select onChange={this.update('prj_id')}
+                  className="auth-input-field">
+            <option value={0} key={0}>Personal Task</option>
+            {
+              this.props.prjs.map(prj => <option value={prj.id} key={prj.id}>{prj.name}</option>)
+            }
+        </ select>
+        <input type="submit" onClick={this.addTask}/>
+      </li> );
+    
     return(
       <div>
         <ul>
@@ -113,8 +131,7 @@ class UserTasks extends React.Component{
                 <li key={task.id}>
                   <input type="text" 
                          value={this.state.tasks[task.id] ? this.state.tasks[task.id].name : ""}
-                         onChange={this.props.canEdit ? this.changeTask(task.id) : undefined}
-                         
+                         onChange={this.props.canEdit ? this.changeTask(task.id) : undefined}      
                   />
                   
                   <p onClick={this.deleteTask(task.id)}> X {task.name}
@@ -122,28 +139,11 @@ class UserTasks extends React.Component{
                 </li>
               )
             }
-            <li key={0}>
-              <h5>Create a new task:</h5>
-              <input type="text"
-                     value={this.state.newTaskName}
-                     onChange={this.update("newTaskName")}
-              />
-              <select onChange={this.update('prj_id')}
-                        className="auth-input-field"
-                >
-                  <option value={0} key={0}>Personal Task</option>
-                  {
-                    this.props.prjs.map(prj => <option value={prj.id} key={prj.id}>{prj.name}</option>)
-                  }
-              </ select>
-              <input type="submit" onClick={this.addTask}/>
-            </li>
+            { addTaskEl }
           </ul>
       </div>
     )
   }
-
-
 }
 
 export default UserTasks;

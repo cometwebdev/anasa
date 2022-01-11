@@ -63,12 +63,11 @@ class TeamShow extends React.Component{
 
   changeDescription(){
     return (e) => {
-      this.setState({ description: e.currentTarget.value });
+      this.setState({ description: e.currentTarget.value }, this.saveDescription);
       // still having an error of leaving off the last character, 
       // but debouncing should fix that, see below:
       //
       // https://davidwalsh.name/javascript-debounce-function
-      this.saveDescription();
     };
   }
 
