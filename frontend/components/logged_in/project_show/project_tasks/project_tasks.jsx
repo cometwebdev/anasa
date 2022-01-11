@@ -97,15 +97,14 @@ class ProjectTasks extends React.Component{
         <ul>
             {
               Object.values(this.props.tasks).map(task => 
-                <li key={task.id}>
+                <li className="deletableTask" key={task.id}>
                   <input type="text" 
                          value={this.state.tasks[task.id] ? this.state.tasks[task.id].name : ""}
                          onChange={this.changeTask(task.id)}
                          
                   />
                   
-                  <p onClick={this.deleteTask(task.id)}> X {task.name}
-                  </p>
+                  <p onClick={this.deleteTask(task.id)}> X </p>
                 </li>
               )
             }
